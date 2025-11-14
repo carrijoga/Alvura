@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Ordens de Serviço</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item active">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ordens de Serviço</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Ordens de Serviço</h1>
+                    <p class="page-subtitle">Gerencie todas as ordens de serviço da lavanderia.</p>
+                </div>
+                <button class="btn-primary" onclick="window.location.href='criar-ordem.html'">
+                    <i class="fas fa-plus"></i> Nova Ordem de Serviço
+                </button>
+            </div>
+
+            <!-- Filters Card -->
+            <div class="filters-card">
+                <div class="filters-header">
+                    <h3 class="filters-title">
+                        <i class="fas fa-filter"></i> Filtros
+                    </h3>
+                    <button class="btn-text" id="toggleFilters">
+                        <i class="fas fa-chevron-up"></i> Recolher
+                    </button>
+                </div>
+                
+                <div class="filters-content" id="filtersContent">
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <label class="filter-label">Buscar</label>
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Nº OS, Cliente..." id="searchFilter">
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Status</label>
+                            <select class="filter-select" id="statusFilter">
+                                <option value="">Todos os Status</option>
+                                <option value="solicitado">Solicitado</option>
+                                <option value="coletado">Coletado</option>
+                                <option value="lavagem">Em Lavagem</option>
+                                <option value="secagem">Secagem</option>
+                                <option value="passadoria">Passadoria</option>
+                                <option value="embalado">Embalado</option>
+                                <option value="pronto">Pronto</option>
+                                <option value="rota">Em Rota</option>
+                                <option value="entregue">Entregue</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Cliente</label>
+                            <select class="filter-select" id="clienteFilter">
+                                <option value="">Todos os Clientes</option>
+                                <option value="1">Hotel Fazenda Vista Linda</option>
+                                <option value="2">Pousada Jardim Real</option>
+                                <option value="3">Resort Praias Douradas</option>
+                                <option value="4">Hotel Central Plaza</option>
+                                <option value="5">Pousada Serra Verde</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Data Inicial</label>
+                            <input type="date" class="filter-input" id="dataInicialFilter">
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Data Final</label>
+                            <input type="date" class="filter-input" id="dataFinalFilter">
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Motorista</label>
+                            <select class="filter-select" id="motoristaFilter">
+                                <option value="">Todos os Motoristas</option>
+                                <option value="1">Carlos Silva</option>
+                                <option value="2">Pedro Santos</option>
+                                <option value="3">João Oliveira</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filters-actions">
+                        <button class="btn-secondary" id="clearFilters">
+                            <i class="fas fa-times"></i> Limpar Filtros
+                        </button>
+                        <button class="btn-primary" id="applyFilters">
+                            <i class="fas fa-search"></i> Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Summary -->
+            <div class="stats-summary">
+                <div class="summary-item">
+                    <span class="summary-label">Total de Ordens</span>
+                    <span class="summary-value">248</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Em Andamento</span>
+                    <span class="summary-value text-primary">45</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Entregues Hoje</span>
+                    <span class="summary-value text-success">12</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Atrasadas</span>
+                    <span class="summary-value text-danger">3</span>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="table-card">
+                <div class="table-header">
+                    <div class="table-header-left">
+                        <h3 class="table-title">Lista de Ordens</h3>
+                        <span class="table-count">Mostrando <strong>20</strong> de <strong>248</strong> ordens</span>
+                    </div>
+                    <div class="table-actions">
+                        <button class="btn-icon" title="Exportar para Excel">
+                            <i class="fas fa-file-excel"></i>
+                        </button>
+                        <button class="btn-icon" title="Exportar para PDF">
+                            <i class="fas fa-file-pdf"></i>
+                        </button>
+                        <button class="btn-icon" title="Imprimir">
+                            <i class="fas fa-print"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="checkbox" id="selectAll">
+                                </th>
+                                <th>Nº OS</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                                <th>Data Solicitação</th>
+                                <th>Data Coleta</th>
+                                <th>Prev. Entrega</th>
+                                <th>Valor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">OS-2024-0248</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <span>Hotel Fazenda Vista Linda</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-lavagem">Em Lavagem</span></td>
+                                <td>14/11/2024 09:30</td>
+                                <td>14/11/2024 11:00</td>
+                                <td>
+                                    <span class="date-badge date-today">Hoje 18:00</span>
+                                </td>
+                                <td><strong>R$ 696,00</strong></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes" onclick="window.location.href='detalhes-ordem.html'">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-action-danger" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">OS-2024-0247</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <span>Pousada Jardim Real</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-pronto">Pronto</span></td>
+                                <td>13/11/2024 14:20</td>
+                                <td>13/11/2024 16:00</td>
+                                <td>
+                                    <span class="date-badge date-today">Hoje 14:00</span>
+                                </td>
+                                <td><strong>R$ 1.248,50</strong></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-action-danger" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">OS-2024-0246</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <span>Resort Praias Douradas</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-secagem">Secagem</span></td>
+                                <td>14/11/2024 08:00</td>
+                                <td>14/11/2024 10:30</td>
+                                <td>
+                                    <span class="date-badge date-tomorrow">Amanhã 12:00</span>
+                                </td>
+                                <td><strong>R$ 2.890,00</strong></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-action-danger" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="row-delayed">
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">OS-2024-0245</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <span>Hotel Central Plaza</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-passadoria">Passadoria</span></td>
+                                <td>12/11/2024 10:15</td>
+                                <td>12/11/2024 14:00</td>
+                                <td>
+                                    <span class="date-badge date-delayed">
+                                        <i class="fas fa-exclamation-triangle"></i> Atrasado
+                                    </span>
+                                </td>
+                                <td><strong>R$ 543,00</strong></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action btn-action-danger" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">OS-2024-0244</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <span>Pousada Serra Verde</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-entregue">Entregue</span></td>
+                                <td>13/11/2024 11:00</td>
+                                <td>13/11/2024 13:30</td>
+                                <td>
+                                    <span class="date-badge date-completed">14/11/2024 10:00</span>
+                                </td>
+                                <td><strong>R$ 987,50</strong></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Reimprimir">
+                                            <i class="fas fa-print"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div class="pagination-info">
+                        <span>Mostrar</span>
+                        <select class="pagination-select">
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span>por página</span>
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-btn">13</button>
+                        <button class="pagination-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="ordens.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Dashboard de Gestão</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Visão Geral</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Dashboard de Gestão</h1>
+                    <p class="page-subtitle">Visão geral das operações diárias e semanais.</p>
+                </div>
+                <div class="period-selector">
+                    <button class="period-btn active">Hoje</button>
+                    <button class="period-btn">Esta Semana</button>
+                    <button class="period-btn">Este Mês</button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(33, 150, 243, 0.1);">
+                        <i class="fas fa-sync" style="color: #2196F3;"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Ordens em Andamento</p>
+                        <h3 class="stat-value">18</h3>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +3 desde ontem
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(76, 175, 80, 0.1);">
+                        <i class="fas fa-check-circle" style="color: #4CAF50;"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Ordens Concluídas Hoje</p>
+                        <h3 class="stat-value">12</h3>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +5,2%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(156, 39, 176, 0.1);">
+                        <i class="fas fa-dollar-sign" style="color: #9C27B0;"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Faturamento do Mês</p>
+                        <h3 class="stat-value">R$ 52.450</h3>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +12,3%
+                        </span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon" style="background-color: rgba(255, 152, 0, 0.1);">
+                        <i class="fas fa-building" style="color: #FF9800;"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Clientes Ativos</p>
+                        <h3 class="stat-value">28</h3>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +2 este mês
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <!-- Produtividade Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Produtividade Semanal</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="productivityChart"></canvas>
+                    </div>
+                    <div class="chart-footer">
+                        <p class="chart-total">Total processado: <strong>8.980 kg</strong></p>
+                    </div>
+                </div>
+
+                <!-- Status Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Status das Ordens</h3>
+                    </div>
+                    <div class="chart-container donut-container">
+                        <canvas id="statusChart"></canvas>
+                        <div class="donut-center">
+                            <div class="donut-total">45</div>
+                            <div class="donut-label">Ordens</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background-color: #FFC107;"></span>
+                            <span class="legend-label">Recebido</span>
+                            <span class="legend-value">12 (27%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background-color: #2196F3;"></span>
+                            <span class="legend-label">Em Lavagem</span>
+                            <span class="legend-value">15 (33%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background-color: #9E9E9E;"></span>
+                            <span class="legend-label">Secagem</span>
+                            <span class="legend-value">8 (18%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background-color: #4CAF50;"></span>
+                            <span class="legend-label">Pronto</span>
+                            <span class="legend-value">10 (22%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="table-card">
+                <div class="table-header">
+                    <h3 class="table-title">Ordens Recentes</h3>
+                    <div class="table-actions">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar..." id="searchInput">
+                        </div>
+                        <button class="btn-secondary">
+                            <i class="fas fa-filter"></i> Filtrar
+                        </button>
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i> Nova Ordem
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Nº OS</th>
+                                <th>Cliente</th>
+                                <th>Status</th>
+                                <th>Data de Entrada</th>
+                                <th>Previsão de Entrega</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td><strong>OS-2401</strong></td>
+                                <td>Hotel Fazenda Vista Linda</td>
+                                <td><span class="status-badge status-lavagem">Em Lavagem</span></td>
+                                <td>14/11/2024</td>
+                                <td>16/11/2024</td>
+                                <td>
+                                    <button class="btn-table-action">
+                                        <i class="fas fa-eye"></i> Ver Detalhes
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>OS-2402</strong></td>
+                                <td>Pousada Jardim Real</td>
+                                <td><span class="status-badge status-pronto">Pronto</span></td>
+                                <td>13/11/2024</td>
+                                <td>15/11/2024</td>
+                                <td>
+                                    <button class="btn-table-action">
+                                        <i class="fas fa-eye"></i> Ver Detalhes
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>OS-2403</strong></td>
+                                <td>Resort Praias Douradas</td>
+                                <td><span class="status-badge status-secagem">Secagem</span></td>
+                                <td>14/11/2024</td>
+                                <td>16/11/2024</td>
+                                <td>
+                                    <button class="btn-table-action">
+                                        <i class="fas fa-eye"></i> Ver Detalhes
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>OS-2404</strong></td>
+                                <td>Hotel Central Plaza</td>
+                                <td><span class="status-badge status-recebido">Recebido</span></td>
+                                <td>14/11/2024</td>
+                                <td>17/11/2024</td>
+                                <td>
+                                    <button class="btn-table-action">
+                                        <i class="fas fa-eye"></i> Ver Detalhes
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>OS-2405</strong></td>
+                                <td>Pousada Jardim Real</td>
+                                <td><span class="status-badge status-lavagem">Em Lavagem</span></td>
+                                <td>13/11/2024</td>
+                                <td>15/11/2024</td>
+                                <td>
+                                    <button class="btn-table-action">
+                                        <i class="fas fa-eye"></i> Ver Detalhes
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
