@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Detalhes do Financeiro</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="stylesheet" href="financeiro-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item active">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Financeiro</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>FIN-AG-2024-0008</span>
+            </div>
+
+            <!-- Page Title with Actions -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Financeiro #FIN-AG-2024-0008</h1>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                        <span class="tipo-badge tipo-agrupado">Agrupado (3 OSs)</span>
+                        <span class="status-badge status-financeiro-aguardando" style="font-size: 0.875rem;">Aguardando Boleto</span>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Criado em 14/11/2024 às 15:30
+                        </span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button class="btn-secondary" onclick="window.location.href='financeiro.html'">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn-secondary" id="gerarBoletoBtn">
+                        <i class="fas fa-barcode"></i> Gerar Boleto
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                    <button class="btn-primary" id="registrarPagamentoBtn">
+                        <i class="fas fa-check-circle"></i> Registrar Pagamento
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Info Card -->
+            <div class="payment-info-card">
+                <div class="payment-info-header">
+                    <div>
+                        <div class="payment-info-label">Valor Total</div>
+                        <div class="payment-info-value">R$ 8.450,00</div>
+                        <div class="payment-info-detail">Vencimento: 15/12/2024</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div class="payment-info-label">Status</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="status-badge" style="background-color: rgba(255,255,255,0.2); color: white; font-size: 0.9375rem;">
+                                Aguardando Boleto
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+                <!-- Left Column -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Cliente Info -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-hotel" style="margin-right: 0.5rem;"></i>
+                                Informações do Cliente
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Cliente</p>
+                                <p style="font-weight: 600;">Pousada Jardim Real</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">CNPJ</p>
+                                <p style="font-weight: 600;">12.345.678/0001-90</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Contato</p>
+                                <p style="font-weight: 600;">João Santos</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Telefone</p>
+                                <p style="font-weight: 600;">(16) 99876-5432</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Email</p>
+                                <p style="font-weight: 600;">reservas@jardimreal.com.br</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Endereço</p>
+                                <p style="font-weight: 600;">Av. Principal, 123 - Centro</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Composição do Agrupamento -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-layer-group" style="margin-right: 0.5rem;"></i>
+                                Composição do Agrupamento
+                            </h3>
+                        </div>
+                        <div class="items-table-wrapper">
+                            <table class="items-table">
+                                <thead>
+                                    <tr>
+                                        <th>Financeiro Individual</th>
+                                        <th>Ordem de Serviço</th>
+                                        <th>Data Emissão</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>FIN-2024-0142</strong></td>
+                                        <td><a href="detalhes-ordem.html" style="color: var(--primary-color); text-decoration: none;">OS-2024-0242</a></td>
+                                        <td>10/11/2024</td>
+                                        <td><strong>R$ 2.450,00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>FIN-2024-0138</strong></td>
+                                        <td><a href="detalhes-ordem.html" style="color: var(--primary-color); text-decoration: none;">OS-2024-0238</a></td>
+                                        <td>08/11/2024</td>
+                                        <td><strong>R$ 3.120,00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>FIN-2024-0135</strong></td>
+                                        <td><a href="detalhes-ordem.html" style="color: var(--primary-color); text-decoration: none;">OS-2024-0235</a></td>
+                                        <td>05/11/2024</td>
+                                        <td><strong>R$ 2.880,00</strong></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot style="background-color: var(--bg-secondary); font-weight: 600;">
+                                    <tr>
+                                        <td colspan="3" style="text-align: right; padding: 1rem;">TOTAL:</td>
+                                        <td style="padding: 1rem; font-size: 1.125rem; color: var(--primary-color);">R$ 8.450,00</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Boleto Card -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-barcode" style="margin-right: 0.5rem;"></i>
+                                Boleto Bancário
+                            </h3>
+                        </div>
+                        <div class="boleto-card">
+                            <div class="boleto-icon">
+                                <i class="fas fa-barcode"></i>
+                            </div>
+                            <h4 class="boleto-title">Boleto ainda não gerado</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
+                                Clique no botão abaixo para gerar o boleto bancário deste agrupamento.
+                            </p>
+                            <button class="btn-primary" id="gerarBoletoBtn2">
+                                <i class="fas fa-barcode"></i> Gerar Boleto Agora
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-comment-alt" style="margin-right: 0.5rem;"></i>
+                                Observações
+                            </h3>
+                        </div>
+                        <p style="color: var(--text-secondary);">Fechamento mensal - Pousada Jardim Real. Agrupamento referente aos serviços prestados de 05/11 a 10/11/2024.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Informações Financeiras -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                                Informações
+                            </h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Tipo</p>
+                                <span class="tipo-badge tipo-agrupado">Agrupado</span>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Status</p>
+                                <span class="status-badge status-financeiro-aguardando">Aguardando Boleto</span>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Data de Emissão</p>
+                                <p style="font-weight: 600;">14/11/2024</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Data de Vencimento</p>
+                                <p style="font-weight: 600; color: var(--primary-color);">15/12/2024</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Dias para Vencimento</p>
+                                <p style="font-weight: 600;">31 dias</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Valor Total</p>
+                                <p style="font-weight: 700; font-size: 1.25rem; color: var(--primary-color);">R$ 8.450,00</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Qtd. de Financeiros</p>
+                                <p style="font-weight: 600;">3 financeiros</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Histórico -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1.5rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-history" style="margin-right: 0.5rem;"></i>
+                                Histórico
+                            </h3>
+                        </div>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker current"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Agrupamento Criado</div>
+                                    <div class="timeline-date">14/11/2024 15:30</div>
+                                    <div class="timeline-description">3 financeiros agrupados com sucesso</div>
+                                    <div class="timeline-user">
+                                        <i class="fas fa-user"></i> João Silva
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-bolt" style="margin-right: 0.5rem;"></i>
+                                Ações Rápidas
+                            </h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-barcode"></i> Gerar Boleto
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-check-circle"></i> Registrar Pagamento
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-envelope"></i> Enviar por Email
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-whatsapp"></i> Enviar por WhatsApp
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-download"></i> Baixar PDF
+                            </button>
+                            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start; color: var(--danger-color);">
+                                <i class="fas fa-unlink"></i> Desagrupar Financeiros
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Registrar Pagamento -->
+    <div id="pagamentoModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i class="fas fa-check-circle"></i> Registrar Pagamento
+                </h3>
+                <button class="modal-close" id="closePagamentoModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label required">Data do Pagamento</label>
+                    <input type="date" class="form-input" id="dataPagamento" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label required">Forma de Pagamento</label>
+                    <select class="form-select" id="formaPagamento" required>
+                        <option value="">Selecione...</option>
+                        <option value="pix">PIX</option>
+                        <option value="boleto">Boleto Bancário</option>
+                        <option value="transferencia">Transferência Bancária</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="cartao">Cartão</option>
+                        <option value="cheque">Cheque</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Valor Pago</label>
+                    <input type="text" class="form-input" id="valorPago" value="R$ 8.450,00" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Comprovante (opcional)</label>
+                    <input type="file" class="form-input" id="comprovante" accept="image/*,.pdf">
+                    <span class="form-help">Envie uma foto ou PDF do comprovante de pagamento</span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Observações</label>
+                    <textarea class="form-textarea" id="observacoesPagamento" placeholder="Informações adicionais sobre o pagamento..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelPagamento">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button class="btn-primary" id="confirmPagamento">
+                    <i class="fas fa-check"></i> Confirmar Pagamento
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="detalhes-financeiro.js"></script>
+</body>
+</html>

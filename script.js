@@ -1,3 +1,26 @@
+// Dropdown de Notificações
+const notificationBtn = document.getElementById('notificationBtn');
+const notificationDropdown = document.getElementById('notificationDropdown');
+notificationBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    notificationDropdown.style.display = notificationDropdown.style.display === 'block' ? 'none' : 'block';
+    userDropdown.style.display = 'none';
+});
+
+// Dropdown de Usuário
+const userMenuBtn = document.getElementById('userMenuBtn');
+const userDropdown = document.getElementById('userDropdown');
+userMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+    notificationDropdown.style.display = 'none';
+});
+
+// Fechar dropdowns ao clicar fora
+document.addEventListener('click', () => {
+    notificationDropdown.style.display = 'none';
+    userDropdown.style.display = 'none';
+});
 // Menu Toggle para Mobile
 const menuToggle = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
