@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Relatórios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="estoque.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="relatorios.html" class="nav-item active">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User"
+                        class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Relatórios</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Relatórios Gerenciais</h1>
+                    <p class="page-subtitle">Gere relatórios personalizados e análises detalhadas do negócio.</p>
+                </div>
+                <button class="btn-primary" onclick="window.location.href='criar-relatorio.html'">
+                    <i class="fas fa-plus"></i> Novo Relatório
+                </button>
+            </div>
+
+            <!-- Quick Reports -->
+            <div style="margin-bottom: 2rem;">
+                <h2 style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">
+                    <i class="fas fa-bolt" style="margin-right: 0.5rem; color: var(--primary-color);"></i>
+                    Relatórios Rápidos
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <!-- Faturamento -->
+                    <div class="table-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='criar-relatorio.html'">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 48px; height: 48px; background-color: rgba(76, 175, 80, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-dollar-sign" style="font-size: 1.5rem; color: #4CAF50;"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1rem; font-weight: 600; margin: 0;">Faturamento</h3>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Análise de receitas</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Faturamento por período, cliente e serviço prestado.
+                            </p>
+                            <button class="btn-secondary" style="width: 100%;">
+                                <i class="fas fa-chart-line"></i> Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Ordens de Serviço -->
+                    <div class="table-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='criar-relatorio.html'">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 48px; height: 48px; background-color: rgba(33, 150, 243, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-clipboard-list" style="font-size: 1.5rem; color: #2196F3;"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1rem; font-weight: 600; margin: 0;">Ordens de Serviço</h3>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Produtividade</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Volume de ordens, tempo médio e status de conclusão.
+                            </p>
+                            <button class="btn-secondary" style="width: 100%;">
+                                <i class="fas fa-chart-line"></i> Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Estoque -->
+                    <div class="table-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='criar-relatorio.html'">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 48px; height: 48px; background-color: rgba(255, 152, 0, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-box" style="font-size: 1.5rem; color: #FF9800;"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1rem; font-weight: 600; margin: 0;">Estoque</h3>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Movimentações</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Consumo, saldo, produtos críticos e necessidades.
+                            </p>
+                            <button class="btn-secondary" style="width: 100%;">
+                                <i class="fas fa-chart-line"></i> Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Clientes -->
+                    <div class="table-card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='criar-relatorio.html'">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="width: 48px; height: 48px; background-color: rgba(156, 39, 176, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-hotel" style="font-size: 1.5rem; color: #9C27B0;"></i>
+                                </div>
+                                <div>
+                                    <h3 style="font-size: 1rem; font-weight: 600; margin: 0;">Clientes</h3>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Análise comercial</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                                Top clientes, ticket médio e inadimplência.
+                            </p>
+                            <button class="btn-secondary" style="width: 100%;">
+                                <i class="fas fa-chart-line"></i> Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Reports -->
+            <div class="table-card">
+                <div class="table-header">
+                    <div class="table-header-left">
+                        <h3 class="table-title">Relatórios Recentes</h3>
+                        <span class="table-count">Últimos <strong>10</strong> relatórios gerados</span>
+                    </div>
+                    <div class="table-actions">
+                        <button class="btn-icon" title="Atualizar">
+                            <i class="fas fa-sync"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Relatório</th>
+                                <th>Tipo</th>
+                                <th>Período</th>
+                                <th>Gerado em</th>
+                                <th>Gerado por</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-file-pdf" style="color: #D32F2F;"></i>
+                                        <strong>Faturamento Novembro 2024</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-today">Financeiro</span></td>
+                                <td>01/11/2024 - 30/11/2024</td>
+                                <td>14/11/2024 10:30</td>
+                                <td>João Silva</td>
+                                <td><span class="status-badge status-entregue">Pronto</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Visualizar"
+                                            onclick="window.location.href='detalhes-relatorio.html'">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="btn-action" title="Compartilhar">
+                                            <i class="fas fa-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-file-excel" style="color: #388E3C;"></i>
+                                        <strong>Estoque - Produtos Críticos</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-delayed">Estoque</span></td>
+                                <td>-</td>
+                                <td>14/11/2024 09:15</td>
+                                <td>Ana Costa</td>
+                                <td><span class="status-badge status-entregue">Pronto</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Visualizar">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="btn-action" title="Compartilhar">
+                                            <i class="fas fa-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-file-pdf" style="color: #D32F2F;"></i>
+                                        <strong>Ordens - Performance Outubro</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-tomorrow">Operacional</span></td>
+                                <td>01/10/2024 - 31/10/2024</td>
+                                <td>13/11/2024 16:45</td>
+                                <td>Maria Santos</td>
+                                <td><span class="status-badge status-entregue">Pronto</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Visualizar">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="btn-action" title="Compartilhar">
+                                            <i class="fas fa-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-file-pdf" style="color: #D32F2F;"></i>
+                                        <strong>Top 10 Clientes - 3º Trimestre</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-today">Comercial</span></td>
+                                <td>01/07/2024 - 30/09/2024</td>
+                                <td>12/11/2024 14:20</td>
+                                <td>João Silva</td>
+                                <td><span class="status-badge status-entregue">Pronto</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Visualizar">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Download">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                        <button class="btn-action" title="Compartilhar">
+                                            <i class="fas fa-share-alt"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-spinner fa-spin" style="color: var(--primary-color);"></i>
+                                        <strong>Análise Anual 2024</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-today">Gerencial</span></td>
+                                <td>01/01/2024 - 31/12/2024</td>
+                                <td>14/11/2024 11:00</td>
+                                <td>João Silva</td>
+                                <td><span class="status-badge status-lavagem">Processando</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Cancelar" disabled>
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="relatorios.js"></script>
+</body>
+
+</html>

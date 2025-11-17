@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Relatório de Faturamento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @media print {
+            .sidebar, .header, .breadcrumb, .page-header button, .no-print {
+                display: none !important;
+            }
+            .main-wrapper {
+                margin-left: 0 !important;
+            }
+            .content {
+                padding: 1rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="estoque.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="relatorios.html" class="nav-item active">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb no-print">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Relatórios</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Faturamento Novembro 2024</span>
+            </div>
+
+            <!-- Page Title with Actions -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Relatório de Faturamento</h1>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Período: 01/11/2024 a 30/11/2024
+                        </span>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Gerado em: 14/11/2024 10:30
+                        </span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.75rem;" class="no-print">
+                    <button class="btn-secondary" onclick="window.location.href='relatorios.html'">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn-secondary" onclick="window.print()">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-file-excel"></i> Exportar Excel
+                    </button>
+                    <button class="btn-primary">
+                        <i class="fas fa-share-alt"></i> Compartilhar
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPIs Summary -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div class="table-card">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Faturamento Total</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--success-color); margin: 0;">R$ 85.420,00</p>
+                        <p style="font-size: 0.75rem; color: var(--success-color); margin-top: 0.5rem;">
+                            <i class="fas fa-arrow-up"></i> +12,5% vs mês anterior
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Ordens Concluídas</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin: 0;">127</p>
+                        <p style="font-size: 0.75rem; color: var(--success-color); margin-top: 0.5rem;">
+                            <i class="fas fa-arrow-up"></i> +8,3% vs mês anterior
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Ticket Médio</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0;">R$ 672,60</p>
+                        <p style="font-size: 0.75rem; color: var(--success-color); margin-top: 0.5rem;">
+                            <i class="fas fa-arrow-up"></i> +3,8% vs mês anterior
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Clientes Ativos</p>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0;">38</p>
+                        <p style="font-size: 0.75rem; color: var(--success-color); margin-top: 0.5rem;">
+                            <i class="fas fa-arrow-up"></i> +2 novos clientes
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Faturamento Diário -->
+                <div class="table-card">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>
+                            Faturamento Diário
+                        </h3>
+                    </div>
+                    <div style="padding: 0 1.5rem 1.5rem;">
+                        <canvas id="faturamentoDiarioChart" height="80"></canvas>
+                    </div>
+                </div>
+
+                <!-- Faturamento por Categoria -->
+                <div class="table-card">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-chart-pie" style="margin-right: 0.5rem;"></i>
+                            Por Categoria
+                        </h3>
+                    </div>
+                    <div style="padding: 0 1.5rem 1.5rem;">
+                        <canvas id="categoriaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Clientes -->
+            <div class="table-card" style="margin-bottom: 2rem;">
+                <div class="table-header">
+                    <h3 class="table-title">
+                        <i class="fas fa-trophy" style="margin-right: 0.5rem;"></i>
+                        Top 10 Clientes do Mês
+                    </h3>
+                </div>
+
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Cliente</th>
+                                <th>Ordens</th>
+                                <th>Faturamento</th>
+                                <th>Ticket Médio</th>
+                                <th>% do Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #FFD700;">1º</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Resort Praias Douradas</strong>
+                                    </div>
+                                </td>
+                                <td>18</td>
+                                <td><strong style="color: var(--success-color);">R$ 15.890,00</strong></td>
+                                <td>R$ 882,78</td>
+                                <td><strong>18,6%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #C0C0C0;">2º</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Hotel Fazenda Vista Linda</strong>
+                                    </div>
+                                </td>
+                                <td>15</td>
+                                <td><strong style="color: var(--success-color);">R$ 12.450,00</strong></td>
+                                <td>R$ 830,00</td>
+                                <td><strong>14,6%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #CD7F32;">3º</strong></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Hotel Central Plaza</strong>
+                                    </div>
+                                </td>
+                                <td>14</td>
+                                <td><strong style="color: var(--success-color);">R$ 10.780,00</strong></td>
+                                <td>R$ 770,00</td>
+                                <td><strong>12,6%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>4º</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Pousada Jardim Real</strong>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td><strong>R$ 9.240,00</strong></td>
+                                <td>R$ 770,00</td>
+                                <td><strong>10,8%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>5º</td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Pousada Serra Verde</strong>
+                                    </div>
+                                </td>
+                                <td>11</td>
+                                <td><strong>R$ 8.470,00</strong></td>
+                                <td>R$ 770,00</td>
+                                <td><strong>9,9%</strong></td>
+                            </tr>
+                        </tbody>
+                        <tfoot style="background-color: var(--bg-secondary); font-weight: 600;">
+                            <tr>
+                                <td colspan="2" style="text-align: right; padding: 1rem;">TOP 5 TOTAL:</td>
+                                <td style="padding: 1rem;">70</td>
+                                <td style="padding: 1rem; color: var(--success-color);">R$ 56.830,00</td>
+                                <td style="padding: 1rem;">R$ 811,86</td>
+                                <td style="padding: 1rem;">66,5%</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detalhamento por Serviço -->
+            <div class="table-card" style="margin-bottom: 2rem;">
+                <div class="table-header">
+                    <h3 class="table-title">
+                        <i class="fas fa-list-alt" style="margin-right: 0.5rem;"></i>
+                        Detalhamento por Tipo de Serviço
+                    </h3>
+                </div>
+
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Serviço</th>
+                                <th>Quantidade</th>
+                                <th>Peso (kg)</th>
+                                <th>Preço Médio/kg</th>
+                                <th>Faturamento</th>
+                                <th>% do Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Lavagem Toalhas</strong></td>
+                                <td>2.450 un</td>
+                                <td>3.675 kg</td>
+                                <td>R$ 8,50/kg</td>
+                                <td><strong style="color: var(--success-color);">R$ 31.237,50</strong></td>
+                                <td>36,6%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lavagem Lençóis</strong></td>
+                                <td>1.890 un</td>
+                                <td>2.835 kg</td>
+                                <td>R$ 9,00/kg</td>
+                                <td><strong style="color: var(--success-color);">R$ 25.515,00</strong></td>
+                                <td>29,9%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lavagem Edredons</strong></td>
+                                <td>345 un</td>
+                                <td>1.380 kg</td>
+                                <td>R$ 12,00/kg</td>
+                                <td><strong style="color: var(--success-color);">R$ 16.560,00</strong></td>
+                                <td>19,4%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lavagem Uniformes</strong></td>
+                                <td>678 un</td>
+                                <td>814 kg</td>
+                                <td>R$ 10,50/kg</td>
+                                <td><strong>R$ 8.547,00</strong></td>
+                                <td>10,0%</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outros Serviços</strong></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><strong>R$ 3.560,50</strong></td>
+                                <td>4,1%</td>
+                            </tr>
+                        </tbody>
+                        <tfoot style="background-color: var(--bg-secondary); font-weight: 600;">
+                            <tr>
+                                <td style="text-align: right; padding: 1rem;">TOTAL:</td>
+                                <td style="padding: 1rem;">5.363 un</td>
+                                <td style="padding: 1rem;">8.704 kg</td>
+                                <td style="padding: 1rem;">R$ 9,82/kg</td>
+                                <td style="padding: 1rem; font-size: 1.125rem; color: var(--success-color);">R$ 85.420,00</td>
+                                <td style="padding: 1rem;">100%</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Observações -->
+            <div class="table-card">
+                <div class="table-header" style="margin-bottom: 1rem;">
+                    <h3 class="table-title">
+                        <i class="fas fa-comment-alt" style="margin-right: 0.5rem;"></i>
+                        Observações e Análises
+                    </h3>
+                </div>
+                <div style="padding: 0 1.5rem 1.5rem;">
+                    <ul style="color: var(--text-secondary); line-height: 1.8;">
+                        <li>Crescimento de 12,5% em relação ao mês anterior, impulsionado principalmente pelo aumento de demanda dos resorts.</li>
+                        <li>O Resort Praias Douradas mantém-se como principal cliente, representando 18,6% do faturamento total.</li>
+                        <li>Houve um aumento significativo no volume de toalhas processadas (+15% vs outubro).</li>
+                        <li>Ticket médio teve crescimento de 3,8%, indicando mix de serviços mais rentável.</li>
+                        <li>Recomenda-se atenção especial aos clientes que representam os 66,5% do faturamento (Top 5).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Info -->
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary); font-size: 0.8125rem;">
+                <p>Relatório gerado automaticamente pelo sistema Alvura em 14/11/2024 às 10:30</p>
+                <p>Este relatório é confidencial e destinado exclusivamente para uso interno.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Faturamento Diário Chart
+        const ctx1 = document.getElementById('faturamentoDiarioChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
+                datasets: [{
+                    label: 'Faturamento Diário',
+                    data: [2800, 2950, 2600, 2900, 3100, 2750, 2850, 3200, 3050, 2900, 3150, 2800, 2950, 3300, 2700, 2900, 3050, 3100, 2850, 3200, 2950, 3100, 2800, 3250, 2900, 3150, 3000, 2850, 3200, 2950],
+                    borderColor: '#2196F3',
+                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'R$ ' + value.toLocaleString('pt-BR');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Categoria Chart
+        const ctx2 = document.getElementById('categoriaChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Toalhas', 'Lençóis', 'Edredons', 'Uniformes', 'Outros'],
+                datasets: [{
+                    data: [36.6, 29.9, 19.4, 10.0, 4.1],
+                    backgroundColor: [
+                        '#2196F3',
+                        '#4CAF50',
+                        '#FF9800',
+                        '#9C27B0',
+                        '#757575'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
