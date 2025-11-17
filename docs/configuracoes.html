@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Configurações</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .settings-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 1.5rem;
+        }
+
+        .settings-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .settings-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .settings-menu-item:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--primary-color);
+        }
+
+        .settings-menu-item.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .settings-menu-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .settings-section {
+            display: none;
+        }
+
+        .settings-section.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="estoque.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="relatorios.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="configuracoes.html" class="nav-item active">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User"
+                        class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Configurações</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Configurações do Sistema</h1>
+                    <p class="page-subtitle">Gerencie as configurações gerais da lavanderia.</p>
+                </div>
+            </div>
+
+            <!-- Settings Container -->
+            <div class="settings-container">
+                <!-- Settings Menu -->
+                <div class="settings-menu">
+                    <a class="settings-menu-item active" data-section="empresa">
+                        <i class="fas fa-building"></i>
+                        <span>Empresa</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="usuario">
+                        <i class="fas fa-user"></i>
+                        <span>Meu Perfil</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="sistema">
+                        <i class="fas fa-desktop"></i>
+                        <span>Sistema</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="notificacoes">
+                        <i class="fas fa-bell"></i>
+                        <span>Notificações</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="seguranca">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Segurança</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="integracoes">
+                        <i class="fas fa-plug"></i>
+                        <span>Integrações</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="fiscal">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Fiscal</span>
+                    </a>
+                    <a class="settings-menu-item" data-section="backup">
+                        <i class="fas fa-database"></i>
+                        <span>Backup</span>
+                    </a>
+                </div>
+
+                <!-- Settings Content -->
+                <div class="settings-content">
+                    <!-- Empresa Section -->
+                    <div class="settings-section active" id="empresa-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                                    Dados da Empresa
+                                </h3>
+                            </div>
+
+                            <form id="empresaForm">
+                                <div class="form-grid">
+                                    <div class="form-group" style="grid-column: 1 / -1;">
+                                        <label class="form-label required">Razão Social</label>
+                                        <input type="text" class="form-input" value="Lavanderia Alvura Ltda" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Nome Fantasia</label>
+                                        <input type="text" class="form-input" value="Alvura Lavanderia" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">CNPJ</label>
+                                        <input type="text" class="form-input" value="12.345.678/0001-90" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Inscrição Estadual</label>
+                                        <input type="text" class="form-input" value="123.456.789.012">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Inscrição Municipal</label>
+                                        <input type="text" class="form-input" value="123456">
+                                    </div>
+
+                                    <div class="form-group" style="grid-column: 1 / -1;">
+                                        <label class="form-label">Logotipo</label>
+                                        <input type="file" class="form-input" accept="image/*">
+                                        <span class="form-help">Formatos aceitos: JPG, PNG. Tamanho máximo: 2MB</span>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Endereço</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label required">CEP</label>
+                                        <input type="text" class="form-input" value="14020-000" required>
+                                    </div>
+
+                                    <div class="form-group" style="grid-column: span 2;">
+                                        <label class="form-label required">Logradouro</label>
+                                        <input type="text" class="form-input" value="Avenida Presidente Vargas" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Número</label>
+                                        <input type="text" class="form-input" value="500" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Complemento</label>
+                                        <input type="text" class="form-input" value="Galpão 2">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Bairro</label>
+                                        <input type="text" class="form-input" value="Centro" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Cidade</label>
+                                        <input type="text" class="form-input" value="Ribeirão Preto" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Estado</label>
+                                        <select class="form-select" required>
+                                            <option value="SP" selected>São Paulo</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="MG">Minas Gerais</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Contato</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label required">Telefone</label>
+                                        <input type="tel" class="form-input" value="(16) 3456-7890" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Celular/WhatsApp</label>
+                                        <input type="tel" class="form-input" value="(16) 99876-5432">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Email</label>
+                                        <input type="email" class="form-input" value="contato@alvuralavanderia.com.br" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Website</label>
+                                        <input type="url" class="form-input" value="https://www.alvuralavanderia.com.br">
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Usuario Section -->
+                    <div class="settings-section" id="usuario-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-user" style="margin-right: 0.5rem;"></i>
+                                    Dados do Perfil
+                                </h3>
+                            </div>
+
+                            <form id="perfilForm">
+                                <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);">
+                                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff&size=128"
+                                         alt="Avatar"
+                                         style="width: 128px; height: 128px; border-radius: 50%; border: 4px solid var(--border-color);">
+                                    <div>
+                                        <h4 style="margin-bottom: 0.5rem;">Foto do Perfil</h4>
+                                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
+                                            Tamanho recomendado: 256x256px
+                                        </p>
+                                        <input type="file" accept="image/*" style="display: none;" id="avatarUpload">
+                                        <button type="button" class="btn-secondary" onclick="document.getElementById('avatarUpload').click()">
+                                            <i class="fas fa-upload"></i> Alterar Foto
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label required">Nome Completo</label>
+                                        <input type="text" class="form-input" value="João Silva" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label required">Email</label>
+                                        <input type="email" class="form-input" value="joao.silva@alvura.com.br" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Telefone</label>
+                                        <input type="tel" class="form-input" value="(16) 98765-4321">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Cargo</label>
+                                        <input type="text" class="form-input" value="Administrador" readonly>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Alterar Senha</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Senha Atual</label>
+                                        <input type="password" class="form-input" placeholder="••••••••">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Nova Senha</label>
+                                        <input type="password" class="form-input" placeholder="••••••••">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Confirmar Nova Senha</label>
+                                        <input type="password" class="form-input" placeholder="••••••••">
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Sistema Section -->
+                    <div class="settings-section" id="sistema-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-desktop" style="margin-right: 0.5rem;"></i>
+                                    Configurações do Sistema
+                                </h3>
+                            </div>
+
+                            <form id="sistemaForm">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Idioma</label>
+                                        <select class="form-select">
+                                            <option value="pt-BR" selected>Português (Brasil)</option>
+                                            <option value="en-US">English (US)</option>
+                                            <option value="es-ES">Español</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Fuso Horário</label>
+                                        <select class="form-select">
+                                            <option value="America/Sao_Paulo" selected>Brasília (GMT-3)</option>
+                                            <option value="America/Manaus">Manaus (GMT-4)</option>
+                                            <option value="America/Rio_Branco">Rio Branco (GMT-5)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Formato de Data</label>
+                                        <select class="form-select">
+                                            <option value="DD/MM/YYYY" selected>DD/MM/AAAA</option>
+                                            <option value="MM/DD/YYYY">MM/DD/AAAA</option>
+                                            <option value="YYYY-MM-DD">AAAA-MM-DD</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Formato de Hora</label>
+                                        <select class="form-select">
+                                            <option value="24h" selected>24 horas</option>
+                                            <option value="12h">12 horas (AM/PM)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Moeda</label>
+                                        <select class="form-select">
+                                            <option value="BRL" selected>Real (R$)</option>
+                                            <option value="USD">Dólar ($)</option>
+                                            <option value="EUR">Euro (€)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Casas Decimais</label>
+                                        <select class="form-select">
+                                            <option value="2" selected>2 casas</option>
+                                            <option value="3">3 casas</option>
+                                            <option value="4">4 casas</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Preferências de Interface</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Tema</label>
+                                        <select class="form-select" id="temaSelect">
+                                            <option value="light" selected>Claro</option>
+                                            <option value="dark">Escuro</option>
+                                            <option value="auto">Automático</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Densidade</label>
+                                        <select class="form-select">
+                                            <option value="comfortable" selected>Confortável</option>
+                                            <option value="compact">Compacto</option>
+                                            <option value="spacious">Espaçoso</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Itens por Página</label>
+                                        <select class="form-select">
+                                            <option value="20" selected>20</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Notificações Section -->
+                    <div class="settings-section" id="notificacoes-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-bell" style="margin-right: 0.5rem;"></i>
+                                    Preferências de Notificações
+                                </h3>
+                            </div>
+
+                            <form id="notificacoesForm">
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Notificações por Email</h4>
+
+                                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Nova Ordem de Serviço</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Receber email quando uma nova ordem for criada</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Ordem Concluída</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Receber email quando uma ordem for concluída</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Estoque Baixo</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Alertas de produtos com estoque abaixo do mínimo</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Vencimentos</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Alertas de contas a pagar próximas do vencimento</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox">
+                                        <div>
+                                            <strong>Relatórios Diários</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Receber resumo diário de atividades</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox">
+                                        <div>
+                                            <strong>Newsletter</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Receber novidades e atualizações do sistema</p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Notificações Push</h4>
+
+                                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Alertas do Sistema</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Notificações importantes do sistema</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Atividades</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Notificações de atividades relevantes</p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Segurança Section -->
+                    <div class="settings-section" id="seguranca-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-shield-alt" style="margin-right: 0.5rem;"></i>
+                                    Configurações de Segurança
+                                </h3>
+                            </div>
+
+                            <form id="segurancaForm">
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Autenticação</h4>
+
+                                <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox">
+                                        <div>
+                                            <strong>Autenticação em Dois Fatores (2FA)</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Adiciona uma camada extra de segurança</p>
+                                        </div>
+                                    </label>
+
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Lembrar Dispositivo</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Não solicitar login novamente em dispositivos confiáveis</p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Política de Senha</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Comprimento Mínimo</label>
+                                        <select class="form-select">
+                                            <option value="6">6 caracteres</option>
+                                            <option value="8" selected>8 caracteres</option>
+                                            <option value="12">12 caracteres</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Expiração</label>
+                                        <select class="form-select">
+                                            <option value="never" selected>Nunca</option>
+                                            <option value="30">30 dias</option>
+                                            <option value="60">60 dias</option>
+                                            <option value="90">90 dias</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Tentativas de Login</label>
+                                        <select class="form-select">
+                                            <option value="3">3 tentativas</option>
+                                            <option value="5" selected>5 tentativas</option>
+                                            <option value="unlimited">Ilimitado</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Sessões Ativas</h4>
+
+                                <div class="items-table-wrapper" style="margin-bottom: 2rem;">
+                                    <table class="items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Dispositivo</th>
+                                                <th>Localização</th>
+                                                <th>IP</th>
+                                                <th>Último Acesso</th>
+                                                <th>Ação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="client-cell">
+                                                        <i class="fas fa-desktop text-primary"></i>
+                                                        <strong>Chrome - Windows</strong>
+                                                    </div>
+                                                </td>
+                                                <td>Ribeirão Preto, SP</td>
+                                                <td>192.168.1.100</td>
+                                                <td>Agora</td>
+                                                <td><span class="status-badge status-entregue">Atual</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="client-cell">
+                                                        <i class="fas fa-mobile-alt text-primary"></i>
+                                                        <strong>Safari - iOS</strong>
+                                                    </div>
+                                                </td>
+                                                <td>Ribeirão Preto, SP</td>
+                                                <td>192.168.1.105</td>
+                                                <td>2 horas atrás</td>
+                                                <td>
+                                                    <button class="btn-action btn-action-danger" title="Encerrar">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Integrações Section -->
+                    <div class="settings-section" id="integracoes-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-plug" style="margin-right: 0.5rem;"></i>
+                                    Integrações e APIs
+                                </h3>
+                            </div>
+
+                            <div style="display: grid; gap: 1.5rem;">
+                                <!-- WhatsApp -->
+                                <div style="padding: 1.5rem; background-color: var(--bg-secondary); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 48px; height: 48px; background-color: #25D366; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fab fa-whatsapp" style="font-size: 1.5rem; color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1rem;">WhatsApp Business</h4>
+                                            <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">Envie notificações e atualizações via WhatsApp</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="status-badge status-cancelado">Desconectado</span>
+                                        <button class="btn-secondary" style="margin-left: 1rem;">
+                                            <i class="fas fa-plug"></i> Conectar
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div style="padding: 1.5rem; background-color: var(--bg-secondary); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 48px; height: 48px; background-color: #EA4335; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-envelope" style="font-size: 1.5rem; color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1rem;">SMTP / Email</h4>
+                                            <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">Configure servidor SMTP para envio de emails</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="status-badge status-entregue">Conectado</span>
+                                        <button class="btn-secondary" style="margin-left: 1rem;">
+                                            <i class="fas fa-cog"></i> Configurar
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Pagamento -->
+                                <div style="padding: 1.5rem; background-color: var(--bg-secondary); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 1rem;">
+                                        <div style="width: 48px; height: 48px; background-color: #00C853; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="fas fa-credit-card" style="font-size: 1.5rem; color: white;"></i>
+                                        </div>
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1rem;">Gateway de Pagamento</h4>
+                                            <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">Aceite pagamentos online</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="status-badge status-cancelado">Desconectado</span>
+                                        <button class="btn-secondary" style="margin-left: 1rem;">
+                                            <i class="fas fa-plug"></i> Conectar
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- API -->
+                                <div style="padding: 1.5rem; background-color: var(--bg-secondary); border-radius: 8px;">
+                                    <h4 style="margin: 0 0 1rem 0; font-size: 1rem;">Chave da API</h4>
+                                    <p style="margin: 0 0 1rem 0; font-size: 0.875rem; color: var(--text-secondary);">
+                                        Use esta chave para integrar o Alvura com outros sistemas
+                                    </p>
+                                    <div style="display: flex; gap: 1rem;">
+                                        <input type="text" class="form-input" value="alvura_api_key_1234567890abcdef" readonly style="flex: 1;">
+                                        <button class="btn-secondary">
+                                            <i class="fas fa-copy"></i> Copiar
+                                        </button>
+                                        <button class="btn-secondary">
+                                            <i class="fas fa-sync"></i> Gerar Nova
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fiscal Section -->
+                    <div class="settings-section" id="fiscal-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-file-invoice" style="margin-right: 0.5rem;"></i>
+                                    Configurações Fiscais
+                                </h3>
+                            </div>
+
+                            <form id="fiscalForm">
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Nota Fiscal Eletrônica (NF-e)</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Regime Tributário</label>
+                                        <select class="form-select">
+                                            <option value="simples" selected>Simples Nacional</option>
+                                            <option value="lucro-presumido">Lucro Presumido</option>
+                                            <option value="lucro-real">Lucro Real</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Série NF-e</label>
+                                        <input type="text" class="form-input" value="1">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Próximo Número</label>
+                                        <input type="text" class="form-input" value="1001">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Ambiente</label>
+                                        <select class="form-select">
+                                            <option value="homologacao" selected>Homologação</option>
+                                            <option value="producao">Produção</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <h4 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Impostos</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">ICMS (%)</label>
+                                        <input type="number" class="form-input" value="12" min="0" max="100" step="0.01">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">PIS (%)</label>
+                                        <input type="number" class="form-input" value="0.65" min="0" max="100" step="0.01">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">COFINS (%)</label>
+                                        <input type="number" class="form-input" value="3" min="0" max="100" step="0.01">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">ISS (%)</label>
+                                        <input type="number" class="form-input" value="5" min="0" max="100" step="0.01">
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 1.5rem;">
+                                    <label style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <input type="checkbox" checked>
+                                        <div>
+                                            <strong>Emissão Automática de NF-e</strong>
+                                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin: 0;">Emitir NF-e automaticamente ao concluir ordem de serviço</p>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Backup Section -->
+                    <div class="settings-section" id="backup-section">
+                        <div class="table-card" style="margin-bottom: 1.5rem;">
+                            <div class="table-header" style="margin-bottom: 1.5rem;">
+                                <h3 class="table-title">
+                                    <i class="fas fa-database" style="margin-right: 0.5rem;"></i>
+                                    Backup e Restauração
+                                </h3>
+                            </div>
+
+                            <div style="padding: 1.5rem; background-color: rgba(33, 150, 243, 0.1); border-left: 4px solid var(--primary-color); border-radius: 4px; margin-bottom: 2rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
+                                    <strong style="color: var(--primary-color);">Último Backup</strong>
+                                </div>
+                                <p style="margin: 0; font-size: 0.875rem; color: var(--text-secondary);">
+                                    14/11/2024 às 03:00 - Backup automático realizado com sucesso
+                                </p>
+                            </div>
+
+                            <form id="backupForm">
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Backup Automático</h4>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Frequência</label>
+                                        <select class="form-select">
+                                            <option value="diario" selected>Diário</option>
+                                            <option value="semanal">Semanal</option>
+                                            <option value="mensal">Mensal</option>
+                                            <option value="desativado">Desativado</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Horário</label>
+                                        <input type="time" class="form-input" value="03:00">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Retenção (dias)</label>
+                                        <select class="form-select">
+                                            <option value="7">7 dias</option>
+                                            <option value="15">15 dias</option>
+                                            <option value="30" selected>30 dias</option>
+                                            <option value="60">60 dias</option>
+                                            <option value="90">90 dias</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="margin: 2rem 0;">
+                                    <button type="button" class="btn-primary">
+                                        <i class="fas fa-download"></i> Fazer Backup Agora
+                                    </button>
+                                    <button type="button" class="btn-secondary" style="margin-left: 1rem;">
+                                        <i class="fas fa-upload"></i> Restaurar Backup
+                                    </button>
+                                </div>
+
+                                <h4 style="margin-bottom: 1rem; font-size: 1rem; font-weight: 600;">Backups Disponíveis</h4>
+
+                                <div class="items-table-wrapper">
+                                    <table class="items-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Tipo</th>
+                                                <th>Tamanho</th>
+                                                <th>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>14/11/2024 03:00</td>
+                                                <td>Automático</td>
+                                                <td>45.2 MB</td>
+                                                <td><span class="status-badge status-entregue">Completo</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="btn-action" title="Download">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                        <button class="btn-action" title="Restaurar">
+                                                            <i class="fas fa-upload"></i>
+                                                        </button>
+                                                        <button class="btn-action btn-action-danger" title="Excluir">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>13/11/2024 03:00</td>
+                                                <td>Automático</td>
+                                                <td>44.8 MB</td>
+                                                <td><span class="status-badge status-entregue">Completo</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="btn-action" title="Download">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                        <button class="btn-action" title="Restaurar">
+                                                            <i class="fas fa-upload"></i>
+                                                        </button>
+                                                        <button class="btn-action btn-action-danger" title="Excluir">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>12/11/2024 03:00</td>
+                                                <td>Automático</td>
+                                                <td>44.5 MB</td>
+                                                <td><span class="status-badge status-entregue">Completo</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="btn-action" title="Download">
+                                                            <i class="fas fa-download"></i>
+                                                        </button>
+                                                        <button class="btn-action" title="Restaurar">
+                                                            <i class="fas fa-upload"></i>
+                                                        </button>
+                                                        <button class="btn-action btn-action-danger" title="Excluir">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+                                    <button type="button" class="btn-secondary">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </button>
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-save"></i> Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="configuracoes.js"></script>
+</body>
+
+</html>
