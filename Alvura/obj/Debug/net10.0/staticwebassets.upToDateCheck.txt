@@ -1,0 +1,11 @@
+wwwroot\css\app.css
+wwwroot\icon-192.png
+wwwroot\icon-512.png
+wwwroot\img\alvura-og-image.png
+wwwroot\img\favicon-16x16.png
+wwwroot\img\favicon-32x32.png
+wwwroot\img\favicon.ico
+wwwroot\manifest.webmanifest
+C:\Users\gabri\source\repos\carrijoga\Alvura\Alvura\wwwroot\css\app.css
+C:\Users\gabri\source\repos\carrijoga\Alvura\Alvura\wwwroot\img\favicon.ico
+C:\Users\gabri\source\repos\carrijoga\Alvura\Alvura\wwwroot\manifest.webmanifest

@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docs/assets/alvura-og-image.png" />
+    <File Path="docs/assets/favicon-16x16.png" />
+    <File Path="docs/assets/favicon-32x32.png" />
+    <File Path="docs/assets/favicon.ico" />
+    <File Path="docs/CNAME" />
+    <File Path="docs/criar-financeiro.html" />
+    <File Path="docs/criar-financeiro.js" />
+    <File Path="docs/criar-ordem.html" />
+    <File Path="docs/criar-ordem.js" />
+    <File Path="docs/detalhes-financeiro.html" />
+    <File Path="docs/detalhes-ordem.html" />
+    <File Path="docs/detalhes-ordem.js" />
+    <File Path="docs/financeiro-styles.css" />
+    <File Path="docs/financeiro.html" />
+    <File Path="docs/financeiro.js" />
+    <File Path="docs/index.html" />
+    <File Path="docs/ordens-styles.css" />
+    <File Path="docs/ordens.html" />
+    <File Path="docs/ordens.js" />
+    <File Path="docs/README.md" />
+    <File Path="docs/script.js" />
+    <File Path="docs/styles.css" />
+  </Folder>
+  <Project Path="Alvura/Alvura.csproj" />
+</Solution>
