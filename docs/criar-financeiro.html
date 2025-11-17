@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header-components.css">
     <link rel="stylesheet" href="ordens-styles.css">
     <link rel="stylesheet" href="financeiro-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,16 +67,154 @@
                 <i class="fas fa-bars"></i>
             </button>
             
-            <div class="header-right">
-                <button class="notification-btn">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge">3</span>
-                </button>
-                <div class="user-menu">
-                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
-                    <div class="user-info">
-                        <span class="user-name">João Silva</span>
-                        <span class="user-role">Administrador</span>
+                        <div class="header-right">
+                <!-- Notificações -->
+                <div class="notification-menu-wrapper">
+                    <button class="notification-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="dropdown-header">
+                            <h3>Notificações</h3>
+                            <div class="notification-tabs">
+                                <button class="notification-tab active" data-filter="all">Todas</button>
+                                <button class="notification-tab" data-filter="unread">Não lidas</button>
+                            </div>
+                        </div>
+                        <div class="notification-list">
+                            <div class="notification-item unread" data-type="unread">
+                                <div class="notification-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Ordem de Serviço Concluída</div>
+                                    <div class="notification-message">A ordem OS-2405 foi finalizada com sucesso</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Há 5 minutos
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-type="unread">
+                                <div class="notification-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Estoque Baixo</div>
+                                    <div class="notification-message">Produto "Amaciante Premium" com apenas 5 unidades</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Há 15 minutos
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-type="unread">
+                                <div class="notification-icon info">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Novo Cliente Cadastrado</div>
+                                    <div class="notification-message">Hotel Palace foi adicionado ao sistema</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Há 1 hora
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item" data-type="all">
+                                <div class="notification-icon error">
+                                    <i class="fas fa-times-circle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Pagamento Pendente</div>
+                                    <div class="notification-message">Fatura #1245 vence hoje - R$ 2.350,00</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Há 2 horas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread" data-type="unread">
+                                <div class="notification-icon success">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Pagamento Recebido</div>
+                                    <div class="notification-message">Pagamento de R$ 1.500,00 confirmado</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Há 3 horas
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item" data-type="all">
+                                <div class="notification-icon info">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">Lembrete de Manutenção</div>
+                                    <div class="notification-message">Manutenção preventiva agendada para amanhã</div>
+                                    <div class="notification-time">
+                                        <i class="far fa-clock"></i>
+                                        Ontem
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a href="#">Ver todas as notificações</a>
+                            <button class="mark-all-read">Marcar todas como lidas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu de Usuário -->
+                <div class="user-menu-wrapper">
+                    <div class="user-menu" id="userMenuBtn">
+                        <div class="user-avatar-wrapper">
+                            <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=667eea&color=fff" alt="João Silva" class="user-avatar">
+                            <span class="status-indicator"></span>
+                        </div>
+                        <div class="user-info">
+                            <span class="user-name">João Silva</span>
+                            <span class="user-role">Administrador</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-user-info">
+                            <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=667eea&color=fff" alt="João Silva" class="dropdown-user-avatar">
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-name">João Silva</div>
+                                <div class="dropdown-user-email">joao.silva@alvura.com.br</div>
+                            </div>
+                        </div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Conta</div>
+                            <a href="configuracoes.html" class="dropdown-item" data-action="profile">
+                                <i class="fas fa-user"></i>
+                                Meu Perfil
+                            </a>
+                            <a href="configuracoes.html" class="dropdown-item" data-action="settings">
+                                <i class="fas fa-cog"></i>
+                                Configurações
+                            </a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-section-title">Suporte</div>
+                            <div class="dropdown-item" data-action="help">
+                                <i class="fas fa-question-circle"></i>
+                                Central de Ajuda
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-section">
+                            <div class="dropdown-item danger" data-action="logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sair do Sistema
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -285,6 +424,7 @@
         </main>
     </div>
 
+    <script src="header-components.js"></script>
     <script src="script.js"></script>
     <script src="criar-financeiro.js"></script>
 </body>
