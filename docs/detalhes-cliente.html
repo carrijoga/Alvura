@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Detalhes do Cliente</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item active">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Clientes</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Hotel Fazenda Vista Linda</span>
+            </div>
+
+            <!-- Page Title with Actions -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Hotel Fazenda Vista Linda</h1>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+                        <span class="status-badge status-entregue" style="font-size: 0.875rem;">Ativo</span>
+                        <span style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Cliente desde 15/03/2023
+                        </span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                    <button class="btn-secondary" onclick="window.location.href='clientes.html'">
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                    <button class="btn-primary">
+                        <i class="fas fa-plus"></i> Nova Ordem
+                    </button>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+                <!-- Left Column -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Informações Básicas -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                                Informações Básicas
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Razão Social</p>
+                                <p style="font-weight: 600;">Hotel Fazenda Vista Linda Ltda</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Nome Fantasia</p>
+                                <p style="font-weight: 600;">Hotel Vista Linda</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">CNPJ</p>
+                                <p style="font-weight: 600;">12.345.678/0001-90</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Inscrição Estadual</p>
+                                <p style="font-weight: 600;">123.456.789.012</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Tipo</p>
+                                <p style="font-weight: 600;">Hotel</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Número de Quartos</p>
+                                <p style="font-weight: 600;">150</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Endereço -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                                Endereço
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">CEP</p>
+                                <p style="font-weight: 600;">14020-000</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Logradouro</p>
+                                <p style="font-weight: 600;">Rua das Flores</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Número</p>
+                                <p style="font-weight: 600;">1500</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Complemento</p>
+                                <p style="font-weight: 600;">-</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Bairro</p>
+                                <p style="font-weight: 600;">Jardim América</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Cidade/UF</p>
+                                <p style="font-weight: 600;">Ribeirão Preto - SP</p>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Ponto de Referência</p>
+                                <p style="font-weight: 600;">Próximo ao Shopping Iguatemi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contato -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                                Informações de Contato
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Responsável</p>
+                                <p style="font-weight: 600;">Maria Silva</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Cargo</p>
+                                <p style="font-weight: 600;">Gerente Administrativo</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Telefone Principal</p>
+                                <p style="font-weight: 600;">(16) 98765-4321</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Telefone Secundário</p>
+                                <p style="font-weight: 600;">(16) 3456-7890</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Email Principal</p>
+                                <p style="font-weight: 600;">contato@vistalindalinda.com.br</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Email Secundário</p>
+                                <p style="font-weight: 600;">financeiro@vistalindalinda.com.br</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">WhatsApp</p>
+                                <p style="font-weight: 600;">(16) 98765-4321</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Site</p>
+                                <p style="font-weight: 600;">www.vistalindalinda.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações Comerciais -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-handshake" style="margin-right: 0.5rem;"></i>
+                                Informações Comerciais
+                            </h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Forma de Pagamento</p>
+                                <p style="font-weight: 600;">Boleto Bancário</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Prazo de Pagamento</p>
+                                <p style="font-weight: 600;">30 dias</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Dia de Vencimento</p>
+                                <p style="font-weight: 600;">Dia 10</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Limite de Crédito</p>
+                                <p style="font-weight: 600; color: var(--primary-color);">R$ 50.000,00</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Desconto</p>
+                                <p style="font-weight: 600;">5%</p>
+                            </div>
+                            <div>
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Preço por Kg</p>
+                                <p style="font-weight: 600;">R$ 8,50</p>
+                            </div>
+                            <div style="grid-column: 1 / -1;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Observações Comerciais</p>
+                                <p style="color: var(--text-secondary);">Cliente preferencial com desconto especial em volumes acima de 500kg mensais.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Últimas Ordens de Serviço -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                                Últimas Ordens de Serviço
+                            </h3>
+                            <button class="btn-text">Ver Todas <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                        <div class="items-table-wrapper">
+                            <table class="items-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nº OS</th>
+                                        <th>Data</th>
+                                        <th>Status</th>
+                                        <th>Valor</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong class="os-number">OS-2024-0248</strong></td>
+                                        <td>14/11/2024</td>
+                                        <td><span class="status-badge status-lavagem">Em Lavagem</span></td>
+                                        <td><strong>R$ 696,00</strong></td>
+                                        <td>
+                                            <button class="btn-action" title="Ver Detalhes">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="os-number">OS-2024-0232</strong></td>
+                                        <td>10/11/2024</td>
+                                        <td><span class="status-badge status-entregue">Entregue</span></td>
+                                        <td><strong>R$ 1.248,50</strong></td>
+                                        <td>
+                                            <button class="btn-action" title="Ver Detalhes">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong class="os-number">OS-2024-0215</strong></td>
+                                        <td>05/11/2024</td>
+                                        <td><span class="status-badge status-entregue">Entregue</span></td>
+                                        <td><strong>R$ 823,00</strong></td>
+                                        <td>
+                                            <button class="btn-action" title="Ver Detalhes">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-comment-alt" style="margin-right: 0.5rem;"></i>
+                                Observações
+                            </h3>
+                        </div>
+                        <p style="color: var(--text-secondary);">Hotel com excelente reputação na região. Sempre cumpre com os prazos de pagamento. Preferem coletas às terças e quintas-feiras pela manhã.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Estatísticas -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1.5rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>
+                                Estatísticas
+                            </h3>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <div style="text-align: center; padding: 1rem; background-color: var(--bg-secondary); border-radius: 8px;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Total de Ordens</p>
+                                <p style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">127</p>
+                            </div>
+
+                            <div style="padding: 1rem; background-color: var(--bg-secondary); border-radius: 8px;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Este Mês</p>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.875rem;">Ordens</span>
+                                    <strong>8</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.875rem;">Faturamento</span>
+                                    <strong style="color: var(--success-color);">R$ 6.847,50</strong>
+                                </div>
+                            </div>
+
+                            <div style="padding: 1rem; background-color: var(--bg-secondary); border-radius: 8px;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Média Mensal</p>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.875rem;">Peças</span>
+                                    <strong>2.450</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.875rem;">Valor</span>
+                                    <strong style="color: var(--success-color);">R$ 6.200,00</strong>
+                                </div>
+                            </div>
+
+                            <div style="padding: 1rem; background-color: var(--bg-secondary); border-radius: 8px;">
+                                <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Financeiro</p>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.875rem;">A Receber</span>
+                                    <strong style="color: var(--primary-color);">R$ 3.420,00</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.875rem;">Em Atraso</span>
+                                    <strong style="color: var(--danger-color);">R$ 0,00</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.875rem;">Score</span>
+                                    <strong style="color: var(--success-color);">Excelente</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ações Rápidas -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-bolt" style="margin-right: 0.5rem;"></i>
+                                Ações Rápidas
+                            </h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-plus"></i> Nova Ordem de Serviço
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-clipboard-list"></i> Ver Ordens
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-dollar-sign"></i> Ver Financeiro
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-phone"></i> Ligar para Cliente
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-envelope"></i> Enviar Email
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-whatsapp"></i> Enviar WhatsApp
+                            </button>
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start;">
+                                <i class="fas fa-file-pdf"></i> Gerar Relatório
+                            </button>
+                            <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid var(--border-color);">
+                            <button class="btn-secondary" style="width: 100%; justify-content: flex-start; color: var(--danger-color);">
+                                <i class="fas fa-ban"></i> Desativar Cliente
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Histórico de Atividades -->
+                    <div class="table-card">
+                        <div class="table-header" style="margin-bottom: 1.5rem;">
+                            <h3 class="table-title">
+                                <i class="fas fa-history" style="margin-right: 0.5rem;"></i>
+                                Atividades Recentes
+                            </h3>
+                        </div>
+
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker current"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Nova OS criada</div>
+                                    <div class="timeline-date">14/11/2024 09:30</div>
+                                    <div class="timeline-description">OS-2024-0248</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker completed"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Pagamento recebido</div>
+                                    <div class="timeline-date">12/11/2024 14:20</div>
+                                    <div class="timeline-description">R$ 1.248,50</div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-marker completed"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">OS entregue</div>
+                                    <div class="timeline-date">10/11/2024 16:45</div>
+                                    <div class="timeline-description">OS-2024-0232</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

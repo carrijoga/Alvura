@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Novo Cliente</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item active">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Clientes</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Novo Cliente</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Novo Cliente</h1>
+                    <p class="page-subtitle">Preencha os dados abaixo para cadastrar um novo cliente.</p>
+                </div>
+                <button class="btn-secondary" onclick="window.location.href='clientes.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+
+            <form id="createClientForm">
+                <!-- Informações Básicas -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                            Informações Básicas
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label required">Razão Social</label>
+                            <input type="text" class="form-input" id="razaoSocial" placeholder="Ex: Hotel Fazenda Vista Linda Ltda" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Nome Fantasia</label>
+                            <input type="text" class="form-input" id="nomeFantasia" placeholder="Ex: Hotel Vista Linda" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">CNPJ</label>
+                            <input type="text" class="form-input" id="cnpj" placeholder="00.000.000/0000-00" required>
+                            <span class="form-help">Apenas números ou formatado</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Inscrição Estadual</label>
+                            <input type="text" class="form-input" id="inscricaoEstadual" placeholder="000.000.000.000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Tipo de Estabelecimento</label>
+                            <select class="form-select" id="tipoEstabelecimento" required>
+                                <option value="">Selecione o tipo</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="pousada">Pousada</option>
+                                <option value="resort">Resort</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="motel">Motel</option>
+                                <option value="flat">Flat</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Número de Quartos</label>
+                            <input type="number" class="form-input" id="numeroQuartos" placeholder="0" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Status</label>
+                            <select class="form-select" id="status" required>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endereço -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                            Endereço
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">CEP</label>
+                            <input type="text" class="form-input" id="cep" placeholder="00000-000" required>
+                            <span class="form-help">Digite o CEP para preencher automaticamente</span>
+                        </div>
+
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label required">Logradouro</label>
+                            <input type="text" class="form-input" id="logradouro" placeholder="Ex: Rua das Flores" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Número</label>
+                            <input type="text" class="form-input" id="numero" placeholder="000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Complemento</label>
+                            <input type="text" class="form-input" id="complemento" placeholder="Ex: Sala 101">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Bairro</label>
+                            <input type="text" class="form-input" id="bairro" placeholder="Ex: Centro" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Cidade</label>
+                            <input type="text" class="form-input" id="cidade" placeholder="Ex: Ribeirão Preto" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="">Selecione</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="PR">Paraná</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label">Ponto de Referência</label>
+                            <input type="text" class="form-input" id="pontoReferencia" placeholder="Ex: Próximo ao shopping">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                            Informações de Contato
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Nome do Responsável</label>
+                            <input type="text" class="form-input" id="nomeResponsavel" placeholder="Ex: Maria Silva" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Cargo</label>
+                            <input type="text" class="form-input" id="cargo" placeholder="Ex: Gerente Administrativo">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Telefone Principal</label>
+                            <input type="tel" class="form-input" id="telefonePrincipal" placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Telefone Secundário</label>
+                            <input type="tel" class="form-input" id="telefoneSecundario" placeholder="(00) 00000-0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Email Principal</label>
+                            <input type="email" class="form-input" id="emailPrincipal" placeholder="contato@hotel.com.br" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Secundário</label>
+                            <input type="email" class="form-input" id="emailSecundario" placeholder="financeiro@hotel.com.br">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">WhatsApp</label>
+                            <input type="tel" class="form-input" id="whatsapp" placeholder="(00) 00000-0000">
+                            <span class="form-help">Incluir DDD</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Site</label>
+                            <input type="url" class="form-input" id="site" placeholder="https://www.hotel.com.br">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações Comerciais -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-handshake" style="margin-right: 0.5rem;"></i>
+                            Informações Comerciais
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Forma de Pagamento</label>
+                            <select class="form-select" id="formaPagamento">
+                                <option value="">Selecione</option>
+                                <option value="boleto">Boleto Bancário</option>
+                                <option value="transferencia">Transferência Bancária</option>
+                                <option value="deposito">Depósito</option>
+                                <option value="pix">PIX</option>
+                                <option value="cheque">Cheque</option>
+                                <option value="cartao">Cartão de Crédito</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Prazo de Pagamento</label>
+                            <select class="form-select" id="prazoPagamento">
+                                <option value="">Selecione</option>
+                                <option value="vista">À Vista</option>
+                                <option value="7">7 dias</option>
+                                <option value="15">15 dias</option>
+                                <option value="30">30 dias</option>
+                                <option value="45">45 dias</option>
+                                <option value="60">60 dias</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dia de Vencimento</label>
+                            <select class="form-select" id="diaVencimento">
+                                <option value="">Selecione</option>
+                                <option value="5">Dia 5</option>
+                                <option value="10">Dia 10</option>
+                                <option value="15">Dia 15</option>
+                                <option value="20">Dia 20</option>
+                                <option value="25">Dia 25</option>
+                                <option value="30">Dia 30</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Limite de Crédito</label>
+                            <input type="text" class="form-input" id="limiteCredito" placeholder="R$ 0,00">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Desconto (%)</label>
+                            <input type="number" class="form-input" id="desconto" placeholder="0" min="0" max="100" step="0.01">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Preço por Kg</label>
+                            <input type="text" class="form-input" id="precoKg" placeholder="R$ 0,00">
+                            <span class="form-help">Deixe em branco para usar tabela padrão</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <label class="form-label">Observações Comerciais</label>
+                        <textarea class="form-textarea" id="observacoesComerciais" placeholder="Informações adicionais sobre condições comerciais, acordos especiais, etc..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Observações -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-comment-alt" style="margin-right: 0.5rem;"></i>
+                            Observações Gerais
+                        </h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Observações</label>
+                        <textarea class="form-textarea" id="observacoes" placeholder="Informações adicionais sobre o cliente..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='clientes.html'">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn-secondary">
+                        <i class="fas fa-save"></i> Salvar Rascunho
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-check"></i> Cadastrar Cliente
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="criar-cliente.js"></script>
+</body>
+</html>
