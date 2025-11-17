@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvura - Ordens de Serviço</title>
+    <title>Alvura - Clientes</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="ordens-styles.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -29,11 +26,11 @@
                 <i class="fas fa-chart-line"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="ordens.html" class="nav-item active">
+            <a href="ordens.html" class="nav-item">
                 <i class="fas fa-clipboard-list"></i>
                 <span>Ordens</span>
             </a>
-            <a href="clientes.html" class="nav-item">
+            <a href="clientes.html" class="nav-item active">
                 <i class="fas fa-hotel"></i>
                 <span>Clientes</span>
             </a>
@@ -86,17 +83,17 @@
             <div class="breadcrumb">
                 <span>Dashboard</span>
                 <i class="fas fa-chevron-right"></i>
-                <span>Ordens de Serviço</span>
+                <span>Clientes</span>
             </div>
 
             <!-- Page Title -->
             <div class="page-header">
                 <div class="page-title-group">
-                    <h1 class="page-title">Ordens de Serviço</h1>
-                    <p class="page-subtitle">Gerencie todas as ordens de serviço da lavanderia.</p>
+                    <h1 class="page-title">Clientes</h1>
+                    <p class="page-subtitle">Gerencie o cadastro de hotéis e pousadas atendidos pela lavanderia.</p>
                 </div>
-                <button class="btn-primary" onclick="window.location.href='criar-ordem.html'">
-                    <i class="fas fa-plus"></i> Nova Ordem de Serviço
+                <button class="btn-primary" onclick="window.location.href='criar-cliente.html'">
+                    <i class="fas fa-plus"></i> Novo Cliente
                 </button>
             </div>
 
@@ -107,17 +104,17 @@
                         <i class="fas fa-filter"></i> Filtros
                     </h3>
                     <button class="btn-text" id="toggleFilters">
-                        <i class="fas fa-chevron-down"></i> Recolher
+                        <i class="fas fa-chevron-up"></i> Recolher
                     </button>
                 </div>
 
-                <div class="filters-content collapsed" id="filtersContent">
+                <div class="filters-content" id="filtersContent">
                     <div class="filters-grid">
                         <div class="filter-group">
                             <label class="filter-label">Buscar</label>
                             <div class="search-box">
                                 <i class="fas fa-search"></i>
-                                <input type="text" placeholder="Nº OS, Cliente..." id="searchFilter">
+                                <input type="text" placeholder="Nome, CNPJ, Email..." id="searchFilter">
                             </div>
                         </div>
 
@@ -125,48 +122,41 @@
                             <label class="filter-label">Status</label>
                             <select class="filter-select" id="statusFilter">
                                 <option value="">Todos os Status</option>
-                                <option value="solicitado">Solicitado</option>
-                                <option value="coletado">Coletado</option>
-                                <option value="lavagem">Em Lavagem</option>
-                                <option value="secagem">Secagem</option>
-                                <option value="passadoria">Passadoria</option>
-                                <option value="embalado">Embalado</option>
-                                <option value="pronto">Pronto</option>
-                                <option value="rota">Em Rota</option>
-                                <option value="entregue">Entregue</option>
-                                <option value="cancelado">Cancelado</option>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                                <option value="bloqueado">Bloqueado</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="filter-label">Cliente</label>
-                            <select class="filter-select" id="clienteFilter">
-                                <option value="">Todos os Clientes</option>
-                                <option value="1">Hotel Fazenda Vista Linda</option>
-                                <option value="2">Pousada Jardim Real</option>
-                                <option value="3">Resort Praias Douradas</option>
-                                <option value="4">Hotel Central Plaza</option>
-                                <option value="5">Pousada Serra Verde</option>
+                            <label class="filter-label">Tipo</label>
+                            <select class="filter-select" id="tipoFilter">
+                                <option value="">Todos os Tipos</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="pousada">Pousada</option>
+                                <option value="resort">Resort</option>
+                                <option value="hostel">Hostel</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="filter-label">Data Inicial</label>
-                            <input type="date" class="filter-input" id="dataInicialFilter">
+                            <label class="filter-label">Cidade</label>
+                            <select class="filter-select" id="cidadeFilter">
+                                <option value="">Todas as Cidades</option>
+                                <option value="ribeirao-preto">Ribeirão Preto</option>
+                                <option value="sertaozinho">Sertãozinho</option>
+                                <option value="cravinhos">Cravinhos</option>
+                                <option value="brodowski">Brodowski</option>
+                            </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="filter-label">Data Final</label>
-                            <input type="date" class="filter-input" id="dataFinalFilter">
-                        </div>
-
-                        <div class="filter-group">
-                            <label class="filter-label">Motorista</label>
-                            <select class="filter-select" id="motoristaFilter">
-                                <option value="">Todos os Motoristas</option>
-                                <option value="1">Carlos Silva</option>
-                                <option value="2">Pedro Santos</option>
-                                <option value="3">João Oliveira</option>
+                            <label class="filter-label">Ordenar por</label>
+                            <select class="filter-select" id="ordenarFilter">
+                                <option value="nome-asc">Nome (A-Z)</option>
+                                <option value="nome-desc">Nome (Z-A)</option>
+                                <option value="cadastro-recente">Mais Recentes</option>
+                                <option value="cadastro-antigo">Mais Antigos</option>
                             </select>
                         </div>
                     </div>
@@ -185,29 +175,29 @@
             <!-- Stats Summary -->
             <div class="stats-summary">
                 <div class="summary-item">
-                    <span class="summary-label">Total de Ordens</span>
-                    <span class="summary-value">248</span>
+                    <span class="summary-label">Total de Clientes</span>
+                    <span class="summary-value">42</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Em Andamento</span>
-                    <span class="summary-value text-primary">45</span>
+                    <span class="summary-label">Clientes Ativos</span>
+                    <span class="summary-value text-success">38</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Entregues Hoje</span>
-                    <span class="summary-value text-success">12</span>
+                    <span class="summary-label">Novos este Mês</span>
+                    <span class="summary-value text-primary">5</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Atrasadas</span>
-                    <span class="summary-value text-danger">3</span>
+                    <span class="summary-label">Inativos</span>
+                    <span class="summary-value text-danger">4</span>
                 </div>
             </div>
 
-            <!-- Orders Table -->
+            <!-- Clients Table -->
             <div class="table-card">
                 <div class="table-header">
                     <div class="table-header-left">
-                        <h3 class="table-title">Lista de Ordens</h3>
-                        <span class="table-count">Mostrando <strong>20</strong> de <strong>248</strong> ordens</span>
+                        <h3 class="table-title">Lista de Clientes</h3>
+                        <span class="table-count">Mostrando <strong>20</strong> de <strong>42</strong> clientes</span>
                     </div>
                     <div class="table-actions">
                         <button class="btn-icon" title="Exportar para Excel">
@@ -229,64 +219,60 @@
                                 <th>
                                     <input type="checkbox" class="checkbox" id="selectAll">
                                 </th>
-                                <th>Nº OS</th>
                                 <th>Cliente</th>
+                                <th>Tipo</th>
+                                <th>CNPJ</th>
+                                <th>Contato</th>
+                                <th>Telefone</th>
+                                <th>Cidade</th>
                                 <th>Status</th>
-                                <th>Data Solicitação</th>
-                                <th>Data Coleta</th>
-                                <th>Prev. Entrega</th>
-                                <th>Valor</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="ordersTableBody">
+                        <tbody id="clientsTableBody">
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
-                                <td><strong class="os-number">OS-2024-0248</strong></td>
                                 <td>
                                     <div class="client-cell">
                                         <i class="fas fa-hotel text-primary"></i>
-                                        <span>Hotel Fazenda Vista Linda</span>
+                                        <strong>Hotel Fazenda Vista Linda</strong>
                                     </div>
                                 </td>
-                                <td><span class="status-badge status-lavagem">Em Lavagem</span></td>
-                                <td>14/11/2024 09:30</td>
-                                <td>14/11/2024 11:00</td>
-                                <td>
-                                    <span class="date-badge date-today">Hoje 18:00</span>
-                                </td>
-                                <td><strong>R$ 696,00</strong></td>
+                                <td><span class="date-badge date-today">Hotel</span></td>
+                                <td>12.345.678/0001-90</td>
+                                <td>Maria Silva</td>
+                                <td>(16) 98765-4321</td>
+                                <td>Ribeirão Preto</td>
+                                <td><span class="status-badge status-entregue">Ativo</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes"
-                                            onclick="window.location.href='detalhes-ordem.html'">
+                                            onclick="window.location.href='detalhes-cliente.html'">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action btn-action-danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
+                                        <button class="btn-action" title="Histórico de Ordens">
+                                            <i class="fas fa-clipboard-list"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
-                                <td><strong class="os-number">OS-2024-0247</strong></td>
                                 <td>
                                     <div class="client-cell">
                                         <i class="fas fa-hotel text-primary"></i>
-                                        <span>Pousada Jardim Real</span>
+                                        <strong>Pousada Jardim Real</strong>
                                     </div>
                                 </td>
-                                <td><span class="status-badge status-pronto">Pronto</span></td>
-                                <td>13/11/2024 14:20</td>
-                                <td>13/11/2024 16:00</td>
-                                <td>
-                                    <span class="date-badge date-today">Hoje 14:00</span>
-                                </td>
-                                <td><strong>R$ 1.248,50</strong></td>
+                                <td><span class="date-badge date-tomorrow">Pousada</span></td>
+                                <td>23.456.789/0001-01</td>
+                                <td>João Santos</td>
+                                <td>(16) 99876-5432</td>
+                                <td>Sertãozinho</td>
+                                <td><span class="status-badge status-entregue">Ativo</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -295,28 +281,26 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action btn-action-danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
+                                        <button class="btn-action" title="Histórico de Ordens">
+                                            <i class="fas fa-clipboard-list"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
-                                <td><strong class="os-number">OS-2024-0246</strong></td>
                                 <td>
                                     <div class="client-cell">
                                         <i class="fas fa-hotel text-primary"></i>
-                                        <span>Resort Praias Douradas</span>
+                                        <strong>Resort Praias Douradas</strong>
                                     </div>
                                 </td>
-                                <td><span class="status-badge status-secagem">Secagem</span></td>
-                                <td>14/11/2024 08:00</td>
-                                <td>14/11/2024 10:30</td>
-                                <td>
-                                    <span class="date-badge date-tomorrow">Amanhã 12:00</span>
-                                </td>
-                                <td><strong>R$ 2.890,00</strong></td>
+                                <td><span class="date-badge date-delayed">Resort</span></td>
+                                <td>34.567.890/0001-12</td>
+                                <td>Ana Paula Costa</td>
+                                <td>(16) 97654-3210</td>
+                                <td>Ribeirão Preto</td>
+                                <td><span class="status-badge status-entregue">Ativo</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -325,67 +309,64 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action btn-action-danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="row-delayed">
-                                <td><input type="checkbox" class="checkbox"></td>
-                                <td><strong class="os-number">OS-2024-0245</strong></td>
-                                <td>
-                                    <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <span>Hotel Central Plaza</span>
-                                    </div>
-                                </td>
-                                <td><span class="status-badge status-passadoria">Passadoria</span></td>
-                                <td>12/11/2024 10:15</td>
-                                <td>12/11/2024 14:00</td>
-                                <td>
-                                    <span class="date-badge date-delayed">
-                                        <i class="fas fa-exclamation-triangle"></i> Atrasado
-                                    </span>
-                                </td>
-                                <td><strong>R$ 543,00</strong></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-action" title="Ver Detalhes">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn-action" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn-action btn-action-danger" title="Cancelar">
-                                            <i class="fas fa-times"></i>
+                                        <button class="btn-action" title="Histórico de Ordens">
+                                            <i class="fas fa-clipboard-list"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
-                                <td><strong class="os-number">OS-2024-0244</strong></td>
                                 <td>
                                     <div class="client-cell">
                                         <i class="fas fa-hotel text-primary"></i>
-                                        <span>Pousada Serra Verde</span>
+                                        <strong>Hotel Central Plaza</strong>
                                     </div>
                                 </td>
-                                <td><span class="status-badge status-entregue">Entregue</span></td>
-                                <td>13/11/2024 11:00</td>
-                                <td>13/11/2024 13:30</td>
-                                <td>
-                                    <span class="date-badge date-completed">14/11/2024 10:00</span>
-                                </td>
-                                <td><strong>R$ 987,50</strong></td>
+                                <td><span class="date-badge date-today">Hotel</span></td>
+                                <td>45.678.901/0001-23</td>
+                                <td>Carlos Mendes</td>
+                                <td>(16) 96543-2109</td>
+                                <td>Ribeirão Preto</td>
+                                <td><span class="status-badge status-entregue">Ativo</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                        <button class="btn-action" title="Reimprimir">
-                                            <i class="fas fa-print"></i>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action" title="Histórico de Ordens">
+                                            <i class="fas fa-clipboard-list"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="checkbox"></td>
+                                <td>
+                                    <div class="client-cell">
+                                        <i class="fas fa-hotel text-primary"></i>
+                                        <strong>Pousada Serra Verde</strong>
+                                    </div>
+                                </td>
+                                <td><span class="date-badge date-tomorrow">Pousada</span></td>
+                                <td>56.789.012/0001-34</td>
+                                <td>Fernanda Lima</td>
+                                <td>(16) 95432-1098</td>
+                                <td>Cravinhos</td>
+                                <td><span class="status-badge status-cancelado">Inativo</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-action" title="Ver Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-action" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-action" title="Histórico de Ordens">
+                                            <i class="fas fa-clipboard-list"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -412,9 +393,6 @@
                         <button class="pagination-btn active">1</button>
                         <button class="pagination-btn">2</button>
                         <button class="pagination-btn">3</button>
-                        <button class="pagination-btn">4</button>
-                        <span class="pagination-dots">...</span>
-                        <button class="pagination-btn">13</button>
                         <button class="pagination-btn">
                             <i class="fas fa-chevron-right"></i>
                         </button>
@@ -426,7 +404,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-    <script src="ordens.js"></script>
+    <script src="clientes.js"></script>
 </body>
 
 </html>
