@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Novo Produto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="estoque.html" class="nav-item active">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Estoque</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Novo Produto</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Novo Produto</h1>
+                    <p class="page-subtitle">Preencha os dados abaixo para cadastrar um novo produto no estoque.</p>
+                </div>
+                <button class="btn-secondary" onclick="window.location.href='estoque.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+
+            <form id="createProductForm">
+                <!-- Informações Básicas -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                            Informações Básicas
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Código do Produto</label>
+                            <input type="text" class="form-input" id="codigoProduto" placeholder="Ex: EST-001" required>
+                            <span class="form-help">Código único de identificação</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Código de Barras</label>
+                            <input type="text" class="form-input" id="codigoBarras" placeholder="0000000000000">
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label required">Nome do Produto</label>
+                            <input type="text" class="form-input" id="nomeProduto" placeholder="Ex: Sabão em Pó 5kg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Categoria</label>
+                            <select class="form-select" id="categoria" required>
+                                <option value="">Selecione a categoria</option>
+                                <option value="quimicos">Produtos Químicos</option>
+                                <option value="embalagem">Embalagem</option>
+                                <option value="reposicao">Peças de Reposição</option>
+                                <option value="uniformes">Uniformes</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Unidade de Medida</label>
+                            <select class="form-select" id="unidadeMedida" required>
+                                <option value="">Selecione</option>
+                                <option value="un">Unidade</option>
+                                <option value="kg">Quilograma</option>
+                                <option value="l">Litro</option>
+                                <option value="pct">Pacote</option>
+                                <option value="cx">Caixa</option>
+                                <option value="rolo">Rolo</option>
+                                <option value="m">Metro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Marca</label>
+                            <input type="text" class="form-input" id="marca" placeholder="Ex: Omo">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Modelo/Referência</label>
+                            <input type="text" class="form-input" id="modelo" placeholder="Ex: Multiação">
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-textarea" id="descricao" placeholder="Informações adicionais sobre o produto..." style="min-height: 80px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controle de Estoque -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-boxes" style="margin-right: 0.5rem;"></i>
+                            Controle de Estoque
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Estoque Inicial</label>
+                            <input type="number" class="form-input" id="estoqueInicial" placeholder="0" min="0" step="0.01" required>
+                            <span class="form-help">Quantidade atual em estoque</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Estoque Mínimo</label>
+                            <input type="number" class="form-input" id="estoqueMinimo" placeholder="0" min="0" step="0.01" required>
+                            <span class="form-help">Alerta de reposição</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Estoque Máximo</label>
+                            <input type="number" class="form-input" id="estoqueMaximo" placeholder="0" min="0" step="0.01">
+                            <span class="form-help">Capacidade máxima</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ponto de Pedido</label>
+                            <input type="number" class="form-input" id="pontoPedido" placeholder="0" min="0" step="0.01">
+                            <span class="form-help">Quando fazer nova compra</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Lote de Compra</label>
+                            <input type="number" class="form-input" id="loteCompra" placeholder="0" min="0" step="0.01">
+                            <span class="form-help">Quantidade padrão de compra</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Localização</label>
+                            <input type="text" class="form-input" id="localizacao" placeholder="Ex: Prateleira A-12">
+                            <span class="form-help">Onde o produto está armazenado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informações Financeiras -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-dollar-sign" style="margin-right: 0.5rem;"></i>
+                            Informações Financeiras
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Custo Unitário</label>
+                            <input type="text" class="form-input" id="custoUnitario" placeholder="R$ 0,00" required>
+                            <span class="form-help">Preço de compra</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Preço de Venda</label>
+                            <input type="text" class="form-input" id="precoVenda" placeholder="R$ 0,00">
+                            <span class="form-help">Se aplicável</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Margem de Lucro (%)</label>
+                            <input type="number" class="form-input" id="margemLucro" placeholder="0" min="0" max="100" step="0.01" readonly>
+                            <span class="form-help">Calculado automaticamente</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">NCM</label>
+                            <input type="text" class="form-input" id="ncm" placeholder="0000.00.00">
+                            <span class="form-help">Nomenclatura Comum do Mercosul</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fornecedor -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-truck" style="margin-right: 0.5rem;"></i>
+                            Informações do Fornecedor
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Fornecedor Principal</label>
+                            <select class="form-select" id="fornecedor">
+                                <option value="">Selecione o fornecedor</option>
+                                <option value="1">Química Brasil Ltda</option>
+                                <option value="2">Embalagens Premium</option>
+                                <option value="3">Distribuidora Central</option>
+                                <option value="4">Tecno Peças</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Código do Fornecedor</label>
+                            <input type="text" class="form-input" id="codigoFornecedor" placeholder="Código no catálogo do fornecedor">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Prazo de Entrega (dias)</label>
+                            <input type="number" class="form-input" id="prazoEntrega" placeholder="0" min="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Última Compra</label>
+                            <input type="date" class="form-input" id="ultimaCompra">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validade e Lote -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i>
+                            Validade e Lote
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="controleLote" style="margin-right: 0.5rem;">
+                                Controlar por Lote
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="controleValidade" style="margin-right: 0.5rem;">
+                                Controlar Validade
+                            </label>
+                        </div>
+
+                        <div class="form-group" id="loteGroup" style="display: none;">
+                            <label class="form-label">Número do Lote</label>
+                            <input type="text" class="form-input" id="numeroLote" placeholder="Ex: LOTE-2024-001">
+                        </div>
+
+                        <div class="form-group" id="validadeGroup" style="display: none;">
+                            <label class="form-label">Data de Validade</label>
+                            <input type="date" class="form-input" id="dataValidade">
+                        </div>
+
+                        <div class="form-group" id="fabricacaoGroup" style="display: none;">
+                            <label class="form-label">Data de Fabricação</label>
+                            <input type="date" class="form-input" id="dataFabricacao">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Observações -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-comment-alt" style="margin-right: 0.5rem;"></i>
+                            Observações
+                        </h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Observações Gerais</label>
+                        <textarea class="form-textarea" id="observacoes" placeholder="Informações adicionais sobre o produto, cuidados especiais, etc..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='estoque.html'">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn-secondary" id="saveDraft">
+                        <i class="fas fa-save"></i> Salvar Rascunho
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-check"></i> Cadastrar Produto
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="criar-estoque.js"></script>
+</body>
+</html>
