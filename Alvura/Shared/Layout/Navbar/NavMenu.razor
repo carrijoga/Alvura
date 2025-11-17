@@ -1,0 +1,48 @@
+﻿@inherits NavMenuBase
+
+<MudDrawerHeader Class="pa-6" Style="border-bottom: 1px solid rgba(0, 0, 0, 0.1)">
+    <div class="d-flex align-center gap-2">
+        <MudAvatar Rounded Style="border-radius: 10px" Color="Color.Primary">A</MudAvatar>
+        <MudText Typo="Typo.h5">Alvura</MudText>
+    </div>
+</MudDrawerHeader>
+
+<div class="mt-2">
+    <MudNavMenu Bordered="true" Margin="Margin.Dense" Class="mud-width-full gap-1">
+        <MudNavLink Match="NavLinkMatch.All"
+                    Href="/"
+                    Icon="@Icons.Material.Outlined.Home">
+            Dashboard
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.Prefix"
+                    Href="/estoque"
+                    Icon="@Icons.Material.Outlined.Inventory">
+            Estoque
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All"
+                    Href="/clientes"
+                    Icon="@Icons.Material.Outlined.People">
+            Clientes
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All"
+                    Href="/ordens"
+                    Icon="@Icons.Material.Outlined.Assignment">
+            Ordens
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.Prefix"
+                    Href="/financeiro"
+                    Icon="@Icons.Material.Outlined.AttachMoney">
+            Financeiro
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.Prefix"
+                    Href="/relatorios"
+                    Icon="@Icons.Material.Outlined.BarChart">
+            Relatórios
+        </MudNavLink>
+        <MudNavLink Match="NavLinkMatch.Prefix"
+                    Href="/configuracoes"
+                    Icon="@Icons.Material.Outlined.Settings">
+            Configurações
+        </MudNavLink>
+    </MudNavMenu>
+</div>
