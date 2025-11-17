@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvura - Gerar Relatório</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ordens-styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span class="logo-text">Alvura</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="ordens.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Ordens</span>
+            </a>
+            <a href="clientes.html" class="nav-item">
+                <i class="fas fa-hotel"></i>
+                <span>Clientes</span>
+            </a>
+            <a href="estoque.html" class="nav-item">
+                <i class="fas fa-box"></i>
+                <span>Estoque</span>
+            </a>
+            <a href="financeiro.html" class="nav-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Financeiro</span>
+            </a>
+            <a href="relatorios.html" class="nav-item active">
+                <i class="fas fa-chart-bar"></i>
+                <span>Relatórios</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="header-right">
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <div class="user-menu">
+                    <img src="https://ui-avatars.com/api/?name=Joao+Silva&background=2196F3&color=fff" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">João Silva</span>
+                        <span class="user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Relatórios</span>
+                <i class="fas fa-chevron-right"></i>
+                <span>Gerar Relatório</span>
+            </div>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <div class="page-title-group">
+                    <h1 class="page-title">Gerar Novo Relatório</h1>
+                    <p class="page-subtitle">Configure os parâmetros e gere relatórios personalizados.</p>
+                </div>
+                <button class="btn-secondary" onclick="window.location.href='relatorios.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+
+            <form id="createReportForm">
+                <!-- Tipo de Relatório -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-file-alt" style="margin-right: 0.5rem;"></i>
+                            Tipo de Relatório
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label required">Nome do Relatório</label>
+                            <input type="text" class="form-input" id="nomeRelatorio" placeholder="Ex: Faturamento Mensal Novembro 2024" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Categoria</label>
+                            <select class="form-select" id="categoriaRelatorio" required>
+                                <option value="">Selecione a categoria</option>
+                                <option value="financeiro">Financeiro</option>
+                                <option value="operacional">Operacional</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="estoque">Estoque</option>
+                                <option value="gerencial">Gerencial</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label required">Tipo</label>
+                            <select class="form-select" id="tipoRelatorio" required>
+                                <option value="">Selecione o tipo</option>
+                                <!-- Financeiro -->
+                                <optgroup label="Financeiro" id="optFinanceiro" style="display: none;">
+                                    <option value="faturamento">Faturamento</option>
+                                    <option value="contas-receber">Contas a Receber</option>
+                                    <option value="contas-pagar">Contas a Pagar</option>
+                                    <option value="fluxo-caixa">Fluxo de Caixa</option>
+                                    <option value="dre">DRE - Demonstrativo de Resultados</option>
+                                </optgroup>
+                                <!-- Operacional -->
+                                <optgroup label="Operacional" id="optOperacional" style="display: none;">
+                                    <option value="ordens-servico">Ordens de Serviço</option>
+                                    <option value="produtividade">Produtividade</option>
+                                    <option value="tempo-medio">Tempo Médio de Atendimento</option>
+                                    <option value="capacidade">Capacidade de Produção</option>
+                                </optgroup>
+                                <!-- Comercial -->
+                                <optgroup label="Comercial" id="optComercial" style="display: none;">
+                                    <option value="top-clientes">Top Clientes</option>
+                                    <option value="ticket-medio">Ticket Médio</option>
+                                    <option value="inadimplencia">Inadimplência</option>
+                                    <option value="novos-clientes">Novos Clientes</option>
+                                </optgroup>
+                                <!-- Estoque -->
+                                <optgroup label="Estoque" id="optEstoque" style="display: none;">
+                                    <option value="movimentacao-estoque">Movimentação de Estoque</option>
+                                    <option value="produtos-criticos">Produtos Críticos</option>
+                                    <option value="consumo-medio">Consumo Médio</option>
+                                    <option value="inventario">Inventário</option>
+                                </optgroup>
+                                <!-- Gerencial -->
+                                <optgroup label="Gerencial" id="optGerencial" style="display: none;">
+                                    <option value="dashboard-executivo">Dashboard Executivo</option>
+                                    <option value="analise-trimestral">Análise Trimestral</option>
+                                    <option value="analise-anual">Análise Anual</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Período -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i>
+                            Período de Análise
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Tipo de Período</label>
+                            <select class="form-select" id="tipoPeriodo" required>
+                                <option value="">Selecione</option>
+                                <option value="personalizado">Personalizado</option>
+                                <option value="hoje">Hoje</option>
+                                <option value="ontem">Ontem</option>
+                                <option value="esta-semana">Esta Semana</option>
+                                <option value="semana-passada">Semana Passada</option>
+                                <option value="este-mes">Este Mês</option>
+                                <option value="mes-passado">Mês Passado</option>
+                                <option value="este-trimestre">Este Trimestre</option>
+                                <option value="trimestre-passado">Trimestre Passado</option>
+                                <option value="este-ano">Este Ano</option>
+                                <option value="ano-passado">Ano Passado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="dataInicialGroup" style="display: none;">
+                            <label class="form-label required">Data Inicial</label>
+                            <input type="date" class="form-input" id="dataInicial">
+                        </div>
+
+                        <div class="form-group" id="dataFinalGroup" style="display: none;">
+                            <label class="form-label required">Data Final</label>
+                            <input type="date" class="form-input" id="dataFinal">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-filter" style="margin-right: 0.5rem;"></i>
+                            Filtros Adicionais
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Cliente</label>
+                            <select class="form-select" id="filtroCliente">
+                                <option value="">Todos os Clientes</option>
+                                <option value="1">Hotel Fazenda Vista Linda</option>
+                                <option value="2">Pousada Jardim Real</option>
+                                <option value="3">Resort Praias Douradas</option>
+                                <option value="4">Hotel Central Plaza</option>
+                                <option value="5">Pousada Serra Verde</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="filtroStatus">
+                                <option value="">Todos os Status</option>
+                                <option value="pendente">Pendente</option>
+                                <option value="em-andamento">Em Andamento</option>
+                                <option value="concluido">Concluído</option>
+                                <option value="cancelado">Cancelado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Categoria de Produto</label>
+                            <select class="form-select" id="filtroCategoriaEstoque">
+                                <option value="">Todas as Categorias</option>
+                                <option value="quimicos">Produtos Químicos</option>
+                                <option value="embalagem">Embalagem</option>
+                                <option value="reposicao">Peças de Reposição</option>
+                                <option value="uniformes">Uniformes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Responsável</label>
+                            <select class="form-select" id="filtroResponsavel">
+                                <option value="">Todos os Responsáveis</option>
+                                <option value="joao">João Silva</option>
+                                <option value="maria">Maria Santos</option>
+                                <option value="ana">Ana Costa</option>
+                                <option value="carlos">Carlos Mendes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configurações de Saída -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-cog" style="margin-right: 0.5rem;"></i>
+                            Configurações de Saída
+                        </h3>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label required">Formato</label>
+                            <select class="form-select" id="formatoSaida" required>
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel (XLSX)</option>
+                                <option value="csv">CSV</option>
+                                <option value="html">HTML (Visualizar)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Orientação (PDF)</label>
+                            <select class="form-select" id="orientacao">
+                                <option value="retrato">Retrato</option>
+                                <option value="paisagem">Paisagem</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="incluirGraficos" checked style="margin-right: 0.5rem;">
+                                Incluir Gráficos
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="incluirDetalhamento" checked style="margin-right: 0.5rem;">
+                                Incluir Detalhamento
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="agruparPorPeriodo" style="margin-right: 0.5rem;">
+                                Agrupar por Período
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" id="compararPeriodoAnterior" style="margin-right: 0.5rem;">
+                                Comparar com Período Anterior
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Envio por Email -->
+                <div class="table-card" style="margin-bottom: 1.5rem;">
+                    <div class="table-header" style="margin-bottom: 1.5rem;">
+                        <h3 class="table-title">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                            Envio por Email (Opcional)
+                        </h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" id="enviarEmail" style="margin-right: 0.5rem;">
+                            Enviar relatório por email após geração
+                        </label>
+                    </div>
+
+                    <div id="emailOptions" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label">Destinatários</label>
+                                <input type="text" class="form-input" id="emailDestinatarios" placeholder="email1@exemplo.com, email2@exemplo.com">
+                                <span class="form-help">Separe múltiplos emails com vírgula</span>
+                            </div>
+
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label">Mensagem</label>
+                                <textarea class="form-textarea" id="emailMensagem" placeholder="Mensagem opcional para incluir no email..." style="min-height: 80px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='relatorios.html'">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn-secondary" id="saveTemplate">
+                        <i class="fas fa-save"></i> Salvar como Modelo
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-chart-line"></i> Gerar Relatório
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="criar-relatorio.js"></script>
+</body>
+</html>
