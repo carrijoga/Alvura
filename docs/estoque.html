@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvura - Clientes</title>
+    <title>Alvura - Estoque</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="ordens-styles.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -33,11 +33,11 @@
                 <i class="fas fa-clipboard-list"></i>
                 <span>Ordens</span>
             </a>
-            <a href="clientes.html" class="nav-item active">
+            <a href="clientes.html" class="nav-item">
                 <i class="fas fa-hotel"></i>
                 <span>Clientes</span>
             </a>
-            <a href="estoque.html" class="nav-item">
+            <a href="estoque.html" class="nav-item active">
                 <i class="fas fa-box"></i>
                 <span>Estoque</span>
             </a>
@@ -86,17 +86,17 @@
             <div class="breadcrumb">
                 <span>Dashboard</span>
                 <i class="fas fa-chevron-right"></i>
-                <span>Clientes</span>
+                <span>Estoque</span>
             </div>
 
             <!-- Page Title -->
             <div class="page-header">
                 <div class="page-title-group">
-                    <h1 class="page-title">Clientes</h1>
-                    <p class="page-subtitle">Gerencie o cadastro de hotéis e pousadas atendidos pela lavanderia.</p>
+                    <h1 class="page-title">Controle de Estoque</h1>
+                    <p class="page-subtitle">Gerencie produtos químicos, materiais de embalagem e insumos da lavanderia.</p>
                 </div>
-                <button class="btn-primary" onclick="window.location.href='criar-cliente.html'">
-                    <i class="fas fa-plus"></i> Novo Cliente
+                <button class="btn-primary" onclick="window.location.href='criar-estoque.html'">
+                    <i class="fas fa-plus"></i> Novo Produto
                 </button>
             </div>
 
@@ -107,49 +107,51 @@
                         <i class="fas fa-filter"></i> Filtros
                     </h3>
                     <button class="btn-text" id="toggleFilters">
-                        <i class="fas fa-chevron-up"></i> Recolher
+                        <i class="fas fa-chevron-down"></i> Recolher
                     </button>
                 </div>
 
-                <div class="filters-content" id="filtersContent">
+                <div class="filters-content collapsed" id="filtersContent">
                     <div class="filters-grid">
                         <div class="filter-group">
                             <label class="filter-label">Buscar</label>
                             <div class="search-box">
                                 <i class="fas fa-search"></i>
-                                <input type="text" placeholder="Nome, CNPJ, Email..." id="searchFilter">
+                                <input type="text" placeholder="Nome, Código..." id="searchFilter">
                             </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label class="filter-label">Categoria</label>
+                            <select class="filter-select" id="categoriaFilter">
+                                <option value="">Todas as Categorias</option>
+                                <option value="quimicos">Produtos Químicos</option>
+                                <option value="embalagem">Embalagem</option>
+                                <option value="reposicao">Peças de Reposição</option>
+                                <option value="uniformes">Uniformes</option>
+                                <option value="outros">Outros</option>
+                            </select>
                         </div>
 
                         <div class="filter-group">
                             <label class="filter-label">Status</label>
                             <select class="filter-select" id="statusFilter">
                                 <option value="">Todos os Status</option>
-                                <option value="ativo">Ativo</option>
-                                <option value="inativo">Inativo</option>
-                                <option value="bloqueado">Bloqueado</option>
+                                <option value="disponivel">Disponível</option>
+                                <option value="baixo">Estoque Baixo</option>
+                                <option value="critico">Estoque Crítico</option>
+                                <option value="esgotado">Esgotado</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label class="filter-label">Tipo</label>
-                            <select class="filter-select" id="tipoFilter">
-                                <option value="">Todos os Tipos</option>
-                                <option value="hotel">Hotel</option>
-                                <option value="pousada">Pousada</option>
-                                <option value="resort">Resort</option>
-                                <option value="hostel">Hostel</option>
-                            </select>
-                        </div>
-
-                        <div class="filter-group">
-                            <label class="filter-label">Cidade</label>
-                            <select class="filter-select" id="cidadeFilter">
-                                <option value="">Todas as Cidades</option>
-                                <option value="ribeirao-preto">Ribeirão Preto</option>
-                                <option value="sertaozinho">Sertãozinho</option>
-                                <option value="cravinhos">Cravinhos</option>
-                                <option value="brodowski">Brodowski</option>
+                            <label class="filter-label">Fornecedor</label>
+                            <select class="filter-select" id="fornecedorFilter">
+                                <option value="">Todos os Fornecedores</option>
+                                <option value="1">Química Brasil Ltda</option>
+                                <option value="2">Embalagens Premium</option>
+                                <option value="3">Distribuidora Central</option>
+                                <option value="4">Tecno Peças</option>
                             </select>
                         </div>
 
@@ -158,8 +160,9 @@
                             <select class="filter-select" id="ordenarFilter">
                                 <option value="nome-asc">Nome (A-Z)</option>
                                 <option value="nome-desc">Nome (Z-A)</option>
-                                <option value="cadastro-recente">Mais Recentes</option>
-                                <option value="cadastro-antigo">Mais Antigos</option>
+                                <option value="estoque-menor">Menor Estoque</option>
+                                <option value="estoque-maior">Maior Estoque</option>
+                                <option value="validade">Próximo ao Vencimento</option>
                             </select>
                         </div>
                     </div>
@@ -178,29 +181,29 @@
             <!-- Stats Summary -->
             <div class="stats-summary">
                 <div class="summary-item">
-                    <span class="summary-label">Total de Clientes</span>
-                    <span class="summary-value">42</span>
+                    <span class="summary-label">Total de Produtos</span>
+                    <span class="summary-value">156</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Clientes Ativos</span>
-                    <span class="summary-value text-success">38</span>
+                    <span class="summary-label">Estoque Baixo</span>
+                    <span class="summary-value" style="color: #FF9800;">12</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Novos este Mês</span>
-                    <span class="summary-value text-primary">5</span>
+                    <span class="summary-label">Estoque Crítico</span>
+                    <span class="summary-value text-danger">5</span>
                 </div>
                 <div class="summary-item">
-                    <span class="summary-label">Inativos</span>
-                    <span class="summary-value text-danger">4</span>
+                    <span class="summary-label">Valor Total</span>
+                    <span class="summary-value text-success">R$ 45.280,00</span>
                 </div>
             </div>
 
-            <!-- Clients Table -->
+            <!-- Stock Table -->
             <div class="table-card">
                 <div class="table-header">
                     <div class="table-header-left">
-                        <h3 class="table-title">Lista de Clientes</h3>
-                        <span class="table-count">Mostrando <strong>20</strong> de <strong>42</strong> clientes</span>
+                        <h3 class="table-title">Lista de Produtos</h3>
+                        <span class="table-count">Mostrando <strong>20</strong> de <strong>156</strong> produtos</span>
                     </div>
                     <div class="table-actions">
                         <button class="btn-icon" title="Exportar para Excel">
@@ -222,60 +225,63 @@
                                 <th>
                                     <input type="checkbox" class="checkbox" id="selectAll">
                                 </th>
-                                <th>Cliente</th>
-                                <th>Tipo</th>
-                                <th>CNPJ</th>
-                                <th>Contato</th>
-                                <th>Telefone</th>
-                                <th>Cidade</th>
+                                <th>Código</th>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Estoque Atual</th>
+                                <th>Estoque Mín.</th>
+                                <th>Unidade</th>
+                                <th>Valor Unit.</th>
                                 <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="clientsTableBody">
-                            <tr>
+                        <tbody id="stockTableBody">
+                            <tr class="row-delayed">
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">EST-001</strong></td>
                                 <td>
                                     <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <strong>Hotel Fazenda Vista Linda</strong>
+                                        <i class="fas fa-flask text-primary"></i>
+                                        <strong>Sabão em Pó 5kg</strong>
                                     </div>
                                 </td>
-                                <td><span class="date-badge date-today">Hotel</span></td>
-                                <td>12.345.678/0001-90</td>
-                                <td>Maria Silva</td>
-                                <td>(16) 98765-4321</td>
-                                <td>Ribeirão Preto</td>
-                                <td><span class="status-badge status-entregue">Ativo</span></td>
+                                <td><span class="date-badge date-today">Químicos</span></td>
+                                <td><strong style="color: #D32F2F;">8 un</strong></td>
+                                <td>15 un</td>
+                                <td>Unidade</td>
+                                <td>R$ 45,00</td>
+                                <td><span class="status-badge status-cancelado">Crítico</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes"
-                                            onclick="window.location.href='detalhes-cliente.html'">
+                                            onclick="window.location.href='detalhes-estoque.html'">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action" title="Histórico de Ordens">
-                                            <i class="fas fa-clipboard-list"></i>
+                                        <button class="btn-action" title="Dar Baixa">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">EST-002</strong></td>
                                 <td>
                                     <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <strong>Pousada Jardim Real</strong>
+                                        <i class="fas fa-flask text-primary"></i>
+                                        <strong>Amaciante 5L</strong>
                                     </div>
                                 </td>
-                                <td><span class="date-badge date-tomorrow">Pousada</span></td>
-                                <td>23.456.789/0001-01</td>
-                                <td>João Santos</td>
-                                <td>(16) 99876-5432</td>
-                                <td>Sertãozinho</td>
-                                <td><span class="status-badge status-entregue">Ativo</span></td>
+                                <td><span class="date-badge date-today">Químicos</span></td>
+                                <td><strong>45 un</strong></td>
+                                <td>20 un</td>
+                                <td>Unidade</td>
+                                <td>R$ 38,50</td>
+                                <td><span class="status-badge status-entregue">Disponível</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -284,26 +290,27 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action" title="Histórico de Ordens">
-                                            <i class="fas fa-clipboard-list"></i>
+                                        <button class="btn-action" title="Dar Baixa">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">EST-003</strong></td>
                                 <td>
                                     <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <strong>Resort Praias Douradas</strong>
+                                        <i class="fas fa-flask text-primary"></i>
+                                        <strong>Alvejante 5L</strong>
                                     </div>
                                 </td>
-                                <td><span class="date-badge date-delayed">Resort</span></td>
-                                <td>34.567.890/0001-12</td>
-                                <td>Ana Paula Costa</td>
-                                <td>(16) 97654-3210</td>
-                                <td>Ribeirão Preto</td>
-                                <td><span class="status-badge status-entregue">Ativo</span></td>
+                                <td><span class="date-badge date-today">Químicos</span></td>
+                                <td><strong>32 un</strong></td>
+                                <td>15 un</td>
+                                <td>Unidade</td>
+                                <td>R$ 28,90</td>
+                                <td><span class="status-badge status-entregue">Disponível</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -312,26 +319,27 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action" title="Histórico de Ordens">
-                                            <i class="fas fa-clipboard-list"></i>
+                                        <button class="btn-action" title="Dar Baixa">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">EST-010</strong></td>
                                 <td>
                                     <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <strong>Hotel Central Plaza</strong>
+                                        <i class="fas fa-box text-primary"></i>
+                                        <strong>Saco Plástico 50x60cm</strong>
                                     </div>
                                 </td>
-                                <td><span class="date-badge date-today">Hotel</span></td>
-                                <td>45.678.901/0001-23</td>
-                                <td>Carlos Mendes</td>
-                                <td>(16) 96543-2109</td>
-                                <td>Ribeirão Preto</td>
-                                <td><span class="status-badge status-entregue">Ativo</span></td>
+                                <td><span class="date-badge date-tomorrow">Embalagem</span></td>
+                                <td><strong style="color: #FF9800;">18 pct</strong></td>
+                                <td>25 pct</td>
+                                <td>Pacote</td>
+                                <td>R$ 15,00</td>
+                                <td><span class="status-badge status-passadoria">Baixo</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -340,26 +348,27 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action" title="Histórico de Ordens">
-                                            <i class="fas fa-clipboard-list"></i>
+                                        <button class="btn-action" title="Dar Baixa">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><input type="checkbox" class="checkbox"></td>
+                                <td><strong class="os-number">EST-015</strong></td>
                                 <td>
                                     <div class="client-cell">
-                                        <i class="fas fa-hotel text-primary"></i>
-                                        <strong>Pousada Serra Verde</strong>
+                                        <i class="fas fa-box text-primary"></i>
+                                        <strong>Etiquetas Adesivas</strong>
                                     </div>
                                 </td>
-                                <td><span class="date-badge date-tomorrow">Pousada</span></td>
-                                <td>56.789.012/0001-34</td>
-                                <td>Fernanda Lima</td>
-                                <td>(16) 95432-1098</td>
-                                <td>Cravinhos</td>
-                                <td><span class="status-badge status-cancelado">Inativo</span></td>
+                                <td><span class="date-badge date-tomorrow">Embalagem</span></td>
+                                <td><strong>150 un</strong></td>
+                                <td>50 un</td>
+                                <td>Rolo</td>
+                                <td>R$ 8,50</td>
+                                <td><span class="status-badge status-entregue">Disponível</span></td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-action" title="Ver Detalhes">
@@ -368,8 +377,8 @@
                                         <button class="btn-action" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button class="btn-action" title="Histórico de Ordens">
-                                            <i class="fas fa-clipboard-list"></i>
+                                        <button class="btn-action" title="Dar Baixa">
+                                            <i class="fas fa-minus-circle"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -396,6 +405,9 @@
                         <button class="pagination-btn active">1</button>
                         <button class="pagination-btn">2</button>
                         <button class="pagination-btn">3</button>
+                        <button class="pagination-btn">4</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-btn">8</button>
                         <button class="pagination-btn">
                             <i class="fas fa-chevron-right"></i>
                         </button>
@@ -407,7 +419,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
-    <script src="clientes.js"></script>
+    <script src="estoque.js"></script>
 </body>
 
 </html>
