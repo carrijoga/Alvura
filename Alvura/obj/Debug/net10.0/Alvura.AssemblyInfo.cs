@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alvura")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58ac0827a19b6386ebb0b59051e20eb3f028e5aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+579f1f115b57803281f53f1288ba223b206e43e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alvura")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alvura")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
