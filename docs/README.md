@@ -1,8 +1,28 @@
-# Alvura - Sistema de Gestão de Lavanderia Industrial
+# Alvura - Protótipos HTML/CSS/JS
 
-## 📋 Sobre o Projeto
+> **Esta é a documentação dos protótipos HTML**. Para a documentação completa do projeto, veja [README principal](../README.md).
 
-Sistema web para gestão de lavanderia industrial que atende hotéis, com controle de ordens de serviço, clientes, precificação e rastreamento completo do processo.
+## 📋 Sobre os Protótipos
+
+Esta pasta contém **protótipos funcionais completos** em HTML/CSS/JavaScript do Sistema Alvura. Os protótipos servem como:
+
+- ✅ **Especificação visual** para desenvolvimento
+- ✅ **Validação de UX/UI** com stakeholders
+- ✅ **Demonstração** em produção (GitHub Pages)
+- ✅ **Referência** para migração Blazor
+
+**Demo ao vivo**: https://alvura.carrijoga.com.br
+
+---
+
+## 🔗 Links Rápidos
+
+- [📖 README Principal](../README.md) - Documentação completa do projeto
+- [🏗️ Arquitetura](../ARCHITECTURE.md) - Decisões arquiteturais e diagramas
+- [⚙️ Setup](../SETUP.md) - Como executar o projeto
+- [🗺️ Roadmap](../ROADMAP.md) - Planejamento e próximos passos
+- [🔌 API Spec](API.md) - Especificação da API REST
+- [🗄️ Database](DATABASE.md) - Schema do banco de dados
 
 ---
 
@@ -262,10 +282,71 @@ Validações do lado do servidor devem ser adicionadas na API.
 
 ---
 
+## 🔄 Relação com Projeto Blazor
+
+Estes protótipos estão sendo **migrados sistematicamente** para componentes Blazor WebAssembly.
+
+### Status da Migração
+
+| Módulo | HTML Status | Blazor Status | Prioridade |
+|--------|-------------|---------------|------------|
+| Layout/Navegação | ✅ Completo | ✅ Completo | - |
+| Dashboard | ✅ Completo | 🟡 Em Progresso | Alta |
+| Ordens | ✅ Completo | 🔴 Planejado | Alta |
+| Clientes | ✅ Completo | 🔴 Planejado | Média |
+| Estoque | ✅ Completo | 🔴 Planejado | Média |
+| Financeiro | ✅ Completo | 🔴 Planejado | Média |
+| Relatórios | ✅ Completo | 🔴 Planejado | Baixa |
+| Configurações | ✅ Completo | 🔴 Planejado | Baixa |
+
+### Como Usar os Protótipos como Referência
+
+1. **Abra o protótipo HTML** no navegador
+2. **Analise a estrutura** e comportamento
+3. **Implemente em Blazor** usando MudBlazor
+4. **Compare visualmente** com o protótipo
+5. **Teste funcionalidades** contra o protótipo
+
+Veja [ARCHITECTURE.md](../ARCHITECTURE.md) para detalhes da estratégia de migração.
+
+---
+
+## 📚 Documentação Adicional
+
+### Documentos Técnicos
+
+- **[API.md](API.md)** - Especificação completa da API REST (40+ endpoints)
+- **[DATABASE.md](DATABASE.md)** - Schema do banco de dados (10+ tabelas, relacionamentos, índices)
+
+### Guias do Projeto
+
+- **[README.md](../README.md)** - Documentação completa do projeto
+- **[ARCHITECTURE.md](../ARCHITECTURE.md)** - Arquitetura e decisões técnicas
+- **[SETUP.md](../SETUP.md)** - Guia de instalação e configuração
+- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - Como contribuir
+- **[ROADMAP.md](../ROADMAP.md)** - Planejamento 2024-2026
+
+---
+
 ## 🤝 Suporte
 
-Dúvidas sobre o projeto? Entre em contato!
+Dúvidas sobre os protótipos?
 
-**Versão:** 1.0.0  
-**Data:** Novembro 2024  
-**Status:** Protótipo Funcional (MVP Visual)
+- Veja a [documentação completa](../README.md)
+- Abra uma [issue](https://github.com/carrijoga/Alvura/issues)
+- Entre em contato: contato@alvura.com.br
+
+**Versão dos Protótipos:** 1.0.0
+**Data:** Novembro 2024
+**Status:** ✅ Completo (Congelado)
+**Próximo Passo:** Migração para Blazor WebAssembly
+
+---
+
+<div align="center">
+
+**Protótipos HTML/CSS/JS - Alvura System**
+
+[⬆ Voltar ao README Principal](../README.md)
+
+</div>
